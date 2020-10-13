@@ -182,8 +182,10 @@ A file header looks like this (with line numbers):
 2 | --[[
 3 | 	Project Name -> Category (-> Sub Category) -> File Name (Realm)
 4 | 	by FileAuthor AuthorContact
-5 | --]]
-6 | *empty line*
+5 |
+6 | 	Description
+7 | --]]
+8 | *empty line*
 ```
 Realm MUST be one of `ServerSide`, `ClientSide` or `Shared`.
 Author contact can be one of the following:
@@ -191,14 +193,18 @@ Author contact can be one of the following:
 - An email: `<email@website.com>`
 - A GitHub username: `(@USERNAME)`
 
+The description MAY not be given.
+
 **Example:**
 ```
 1 |
 2 | --[[
 3 | 	Admin Plugin -> Ban Command (ServerSide)
 4 | 	by Tassilo (@TASSIA710)
-5 | --]]
-6 |
+5 |
+6 | 	This file contains the ban command.
+7 | --]]
+8 |
 ```
 
 
