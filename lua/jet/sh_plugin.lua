@@ -50,7 +50,7 @@ function jet.LoadPlugin(name)
 
 	-- Download meta
 	if SERVER then
-		resource.AddSingleFile(metaFile)
+		resource.AddSingleFile("lua/" .. metaFile)
 	end
 
 	-- Verify meta fields
