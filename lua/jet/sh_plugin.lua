@@ -116,7 +116,32 @@ function jet.LoadPlugin(name)
 	-- TODO
 
 	-- Done!
+	plugins[name] = meta
 	return true, meta
+end
+
+
+
+--- Tests a plugin by its folder name.
+-- @param name [string] - the folder name
+-- @returns success [boolean] - success?
+-- @returns error [string] - the error or nil
+function jet.TestPlugin(name)
+	-- Plugin loaded?
+	if not plugins[name] or plugins[name].disabled then
+		return false, "Cannot test an unloaded plugin."
+	end
+
+	-- Define paths
+	local pathPlugin = "plugins/" .. name
+
+	-- Test
+	if file.Exists(pathPlugin .. "/test.lua", "LUA") then
+		include(pathPlugin .. "/test.lua")
+		return true
+	else
+		return false, "Test suite not found."
+	end
 end
 
 
@@ -146,4 +171,36 @@ function jet.LoadPlugins()
 		log.Info("[Jet] Loaded " .. success .. " out of " .. count .. " available plugins.")
 	end
 	return count, success
+end
+
+
+
+--- Tests all available plugins in the plugins directory.
+-- @returns count [number] - how many plugin folders were tested
+function jet.TestPlugins()
+	log.Info("[Jet] Running test suites...")
+	local count = 0
+	local _, dirs = file.Find("plugins/*", "LUA")
+
+	for _, dir in pairs(dirs) do
+		-- Don't test unloaded or disabled plugins
+		local pl = plugins[dir]
+		if not pl or pl.disabled then continue end
+
+		-- Log
+		log.Debug("[Jet] - " .. pl.author .. "/" .. pl.name .. "...")
+
+		-- Test
+		success, reason = jet.TestPlugin(dir)
+		if not success then
+			if reason then
+				log.Warning("[Jet]   -> " .. reason)
+			else
+				log.Warning("[Jet]   -> Test Failed")
+			end
+		end
+	end
+
+	log.Info("[Jet] Tested " .. count .. " plugins.")
+	return count
 end
