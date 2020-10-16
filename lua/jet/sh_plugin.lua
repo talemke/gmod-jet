@@ -35,22 +35,22 @@ function jet.LoadPlugin(name)
 	-- Define paths
 	local pathPlugins = "plugins"
 	local pathPlugin = pathPlugins .. "/" .. name
-	local metaFile = pathPlugin .. "/plugin.json"
+	local metaFile = pathPlugin .. "/plugin.lua"
 
 	-- Check plugin.json
 	if not file.Exists(metaFile, "LUA") then
-		return false, "plugin.json not found"
+		return false, "plugin.lua not found"
 	end
 
 	-- Load meta
-	local meta = util.JSONToTable(file.Read(metaFile, "LUA"))
+	local meta = include(metaFile)
 	if not meta then
-		return false, "Invalid plugin.json"
+		return false, "Invalid plugin.lua"
 	end
 
 	-- Download meta
 	if SERVER then
-		resource.AddSingleFile("lua/" .. metaFile)
+		AddCSLuaFile(metaFile)
 	end
 
 	-- Verify meta fields
