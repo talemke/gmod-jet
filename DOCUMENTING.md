@@ -120,12 +120,59 @@ function SomeFunction() end
 ```
 
 ### Realm
-You can also override the realm for a function. If this is not supplied, the parser will asusme the realm
+You can also override the realm for a function. If this is not supplied, the parser will assume the realm
 depending on your file prefix (`cl_`, `sh_` or `sv_`).
 ```lua
 --- This function is only available serverside.
 -- @realm server
 function SomeFunction() end
+```
+
+
+### LocalPlayer only
+If your metafunction or hook only works on the local-player when run clientside
+you can add this keyword.
+```lua
+--- This function will only work on the local player.
+-- @localonly
+function PLAYER:Notify(text) end
+```
+
+
+### Asynchronous Function
+If your function is asynchronous, meaning the function is returning before its
+queued actions take effect (such as e.g. DB queries, HTTP requests), you can
+add the `async` keyword to it.
+```lua
+--- Load crucial database data.
+-- @param callback [function] - called when done
+-- @async
+function LoadDB(callback) end
+```
+
+
+### Blocking Function
+Do you have a blocking function? Then you can use the `blocking` keyword.
+A function is blocking, if it takes an unusual amount of time to finish.
+The most basic rule to determine whether your function is 'blocking' is
+to check whether it should be run on a frequent hook (e.g. HUDPaint).
+```lua
+--- Loops through multiple huge tables and sorts them.
+-- @blocking
+function ExpensiveFunction() end
+```
+
+
+### Context
+Does your function require a specific context (e.g. 2D for drawing)?
+Valid contexts are:
+- `2D`
+- `3D`
+- `any`
+```lua
+--- Draw cool circles on the screen!
+-- @context 2D
+function DrawCoolCircles() end
 ```
 
 
