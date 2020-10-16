@@ -16,6 +16,10 @@ local logNet = false
 
 
 
+local function timestamp()
+	return os.date("!%H:%M:%S")
+end
+
 local function varargsToString(level, ...)
 	local args, str = {...}, ""
 	for _, arg in pairs(args) do
@@ -32,7 +36,7 @@ local function varargsToString(level, ...)
 		end
 		str = str .. " " .. tostring(arg)
 	end
-	return os.date("%c") .. " | " .. level .. " | " .. string.sub(str, 2)
+	return timestamp() .. " | " .. level .. " | " .. string.sub(str, 2)
 end
 
 
