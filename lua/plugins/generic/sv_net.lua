@@ -19,5 +19,6 @@ net.Receive("Jet:PlayerNetworkReady", function(_, ply)
 	-- @param ply [Player] - the player
 	-- @realm shared
 	-- @localonly
+	-- @since v1.0.0
 	hook.Run("PlayerNetworkReady", ply)
 end)
