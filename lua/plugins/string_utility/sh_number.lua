@@ -1,6 +1,6 @@
 
 --[[
-	String Plugin -> Random Strings (Shared)
+	String Plugin -> Number Utility (Shared)
 	by Tassilo (@TASSIA710)
 
 	Number utilities.

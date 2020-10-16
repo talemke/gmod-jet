@@ -1,6 +1,6 @@
 
 --[[
-	String Plugin -> Random Strings (Shared)
+	String Plugin -> Color Utility (Shared)
 	by Tassilo (@TASSIA710)
 
 	String-Color utilities.
