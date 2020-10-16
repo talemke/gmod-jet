@@ -137,8 +137,13 @@ function jet.TestPlugin(name)
 
 	-- Test
 	if file.Exists(pathPlugin .. "/test.lua", "LUA") then
-		include(pathPlugin .. "/test.lua")
-		return true
+		local test = CompileFile(pathPlugin .. "/test.lua")
+		local status, err = pcall(test)
+		if status then
+			return true
+		else
+			return false, err
+		end
 	else
 		return false, "Test suite not found."
 	end
@@ -155,7 +160,7 @@ function jet.LoadPlugins()
 	local _, dirs = file.Find("plugins/*", "LUA")
 
 	for _, dir in pairs(dirs) do
-		status, data = jet.LoadPlugin(dir)
+		local status, data = jet.LoadPlugin(dir)
 		if status then
 			log.Debug("[Jet] - " .. data.author .. "/" .. data.name .. " - v" .. data.version)
 			success = success + 1
@@ -186,17 +191,18 @@ function jet.TestPlugins()
 		-- Don't test unloaded or disabled plugins
 		local pl = plugins[dir]
 		if not pl or pl.disabled then continue end
+		count = count + 1
 
 		-- Log
 		log.Debug("[Jet] - " .. pl.author .. "/" .. pl.name .. "...")
 
 		-- Test
-		success, reason = jet.TestPlugin(dir)
+		local success, reason = jet.TestPlugin(dir)
 		if not success then
 			if reason then
 				log.Warning("[Jet]   -> " .. reason)
 			else
-				log.Warning("[Jet]   -> Test Failed")
+				log.Warning("[Jet]   -> Test failed.")
 			end
 		end
 	end
