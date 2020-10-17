@@ -75,3 +75,28 @@ function jet.LoadPlugins()
 		log.Info("[Jet] Loaded " .. loaded .. " out of " .. #pluginsFound .. " available plugins.")
 	end
 end
+
+
+
+--- Tests all plugins.
+function jet.TestPlugins()
+	log.Info("[Jet] Testing plugins...")
+	local total, success = 0, 0
+
+	-- Test
+	for _, pl in pairs(jet.GetPlugins()) do
+		total = total + 1
+		if not pl:IsTestable() then continue end
+		log.Debug("[Jet] - " .. pl:GetIdentifier())
+		if pl:Test() then
+			success = success + 1
+		end
+	end
+
+	-- Info
+	if total == success then
+		log.Info("[Jet] Tested all " .. total .. " plugins.")
+	else
+		log.Info("[Jet] Tested " .. success .. " out of " .. total .. " available plugins.")
+	end
+end

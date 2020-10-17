@@ -101,6 +101,7 @@ function PLUGIN:Init()
 
 	-- Download files
 	AddCSLuaFileSafe(pluginPath .. "/shared.lua")
+	AddCSLuaFileSafe(pluginPath .. "/test.lua")
 	AddCSLuaFileSafe(pluginPath .. "/cl_init.lua")
 	AddCSLuaFileSafe(pluginPath .. "/sh_test.lua")
 	AddCSLuaFileSafe(pluginPath .. "/cl_test.lua")
@@ -215,6 +216,44 @@ function PLUGIN:Unload()
 end
 
 
+
+
+
+--- TODO
+function PLUGIN:Test()
+	-- Assert
+	assert(self._meta ~= nil, "Plugin not initialized.")
+	assert(self._path ~= nil, "Plugin not initialized.")
+	assert(self._loaded, "Plugin not loaded.")
+
+	-- Prepare
+	local pluginPath = "plugins/" .. self._path
+
+	-- Has test?
+	if not file.Exists(pluginPath .. "/test.lua", "LUA") then
+		return false
+	end
+
+	-- PreTest Hook
+	hook.Run("PluginTest", self)
+
+	-- Test
+	local test = CompileFile(pluginPath .. "/test.lua")
+	test()
+
+	-- PostUnload Hook
+	hook.Run("PluginTested", self, true)
+	return true
+end
+
+
+
+
+
+--- TODO
+function PLUGIN:IsTestable()
+	return file.Exists("plugins/" .. self._path .. "/test.lua", "LUA")
+end
 
 
 
