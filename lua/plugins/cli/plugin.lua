@@ -5,6 +5,7 @@ return {
 	["version"] = "1.0.0",
 	["disabled"] = false,
 	["dependencies"] = {
+		"TASSIA710/StringUtility@v1.0.0"
 	},
 	["soft_dependencies"] = {
 	}
