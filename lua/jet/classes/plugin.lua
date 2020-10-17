@@ -117,7 +117,7 @@ function PLUGIN:Init()
 
 	-- PostInitialize Hook
 	--- Called when a plugin has been successfully initialized.
-	-- @parma plugin [Plugin] - he plugin
+	-- @param plugin [Plugin] - he plugin
 	hook.Run("PluginInitialized", self)
 	return true
 end
