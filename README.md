@@ -3,6 +3,16 @@ A plugin & dependency system for Garry's Mod addons.
 
 
 
+### Documentation
+
+All functions/hooks/classes are well documented. You can find the
+documentation [here](https://ldoc.tassia.net/TASSIA710/Jet/main/).
+Please keep in mind that the documentation software is still a work
+in progress and does not work completely, however the basics should
+be working.
+
+
+
 ### Features
 
 - **Command Line Interface**\
