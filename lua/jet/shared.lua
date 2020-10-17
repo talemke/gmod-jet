@@ -11,6 +11,11 @@
 jet = {}
 
 
+-- Version
+AddCSLuaFile("sh_version.lua")
+include("sh_version.lua")
+
+
 -- Logging library
 AddCSLuaFile("sh_logging.lua")
 include("sh_logging.lua")
