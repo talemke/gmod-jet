@@ -48,27 +48,15 @@ end)
 -- @param callback [function] - the callback function, takes a table of arguments as input
 -- @param usage [string] (=nil) - how does the command need to be used (e.g. '<player> <reason>' for a kick command)
 -- @param description [string] (=nil) - what does this command
--- @param aliases [varargs] - this commands aliases
 -- @since v1.0.0
-function jet.AddCliCommand(name, callback, usage, description, ...)
-	local aliases = {...}
-
+function jet.AddCliCommand(name, callback, usage, description)
 	local cmd = {
 		name = name,
 		callback = callback,
 		usage = usage,
-		description = description,
-		aliases = aliases
+		description = description
 	}
 	table.insert(commandsRegistered, cmd)
-
-	commands[string.lower(name)] = cmd
-	for _, alias in ipairs(aliases) do
-		alias = string.lower(name)
-		if not commands[alias] then
-			commands[alias] = cmd
-		end
-	end
 end
 
 

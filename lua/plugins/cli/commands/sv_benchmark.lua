@@ -112,4 +112,4 @@ jet.AddCliCommand("benchmark", function(args)
 	f:Close()
 	print("Saved logs to " .. fileName)
 
-end, "<iterations> <expression>", "Benchmark an expression.", "bm")
+end, "<iterations> <expression>", "Benchmark an expression.")
