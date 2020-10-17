@@ -31,3 +31,17 @@ end
 function string.StripPort(str)
 	return string.Explode(":", str)[1]
 end
+
+
+
+--- Returns a new string the consists of the given char being repeated the
+-- given amount of times.
+-- @param amount [number] - how often to repeat?
+-- @param char [string] - the string to repeat
+function string.Repeating(amount, char)
+	local str = ""
+	for i = 1, amount do
+		str = str .. char
+	end
+	return str
+end
