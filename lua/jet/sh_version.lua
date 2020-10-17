@@ -15,6 +15,7 @@ jet.versionBuild = 0
 
 -- git
 jet.versionHead = "b0a64a74e51cb54a5369c3e1d5c0295b1931d1b8"
+jet.versionHeadShort = string.sub(jet.versionHead, 0, 7)
 jet.versionBranch = "main"
 
 
