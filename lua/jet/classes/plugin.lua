@@ -19,7 +19,8 @@ PLUGIN._loaded = false
 
 
 
---- TODO
+--- Initializes the plugin, including reading the meta file of the pluign.
+-- Meta information about a plugin is not available before it is initialized.
 -- @internal
 function PLUGIN:Init()
 	-- Assert
@@ -27,6 +28,9 @@ function PLUGIN:Init()
 	assert(self._meta == nil, "Plugin already initialized.")
 
 	-- PreInitialize Hook
+	--- Called when a plugin is about to be initialized.
+	-- Initializing means that the meta file is about to be read.
+	-- @param plugin [Plugin] - the plugin
 	hook.Run("PluginInitialize", self)
 
 	-- Define paths
@@ -112,6 +116,8 @@ function PLUGIN:Init()
 	self._meta = meta
 
 	-- PostInitialize Hook
+	--- Called when a plugin has been successfully initialized.
+	-- @parma plugin [Plugin] - he plugin
 	hook.Run("PluginInitialized", self)
 	return true
 end
@@ -120,7 +126,10 @@ end
 
 
 
---- TODO
+--- Loads this plugin. This executes the `shared.lua`, `sv_init.lua` and
+-- `cl_init.lua` files in this order.
+-- @returns success [boolean] - successfully loaded?
+-- @returns reason [string] - the reason the load failed, or `nil`
 function PLUGIN:Load()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
@@ -137,6 +146,8 @@ function PLUGIN:Load()
 	end
 
 	-- PreLoad Hook
+	--- Called when a plugin is about to be loaded.
+	-- @param plugin [Plugin] - the plugin
 	hook.Run("PluginLoad", self)
 
 	-- Prepare
@@ -175,6 +186,8 @@ function PLUGIN:Load()
 	self._loaded = true
 
 	-- PostLoad Hook
+	--- Called when a plugin has been successfully loaded.
+	-- @param plugin [Plugin] - the plugin
 	hook.Run("PluginLoaded", self)
 end
 
@@ -182,7 +195,8 @@ end
 
 
 
---- TODO
+--- Unloads this plugin. Will also execute the `sh_unload.lua`, `sv_unload.lua`
+-- and `cl_unload.lua` files in this order.
 function PLUGIN:Unload()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
@@ -190,6 +204,8 @@ function PLUGIN:Unload()
 	assert(self._loaded, "Plugin not loaded.")
 
 	-- PreUnload Hook
+	--- Called when a plugin is about to be unloaded.
+	-- @param plugin [Plugin] - the plugin
 	hook.Run("PluginUnload", self)
 
 	-- Prepare
@@ -212,6 +228,8 @@ function PLUGIN:Unload()
 	self._loaded = false
 
 	-- PostUnload Hook
+	--- Called when a plugin has been successfully unloaded.
+	-- @param plugin [Plugin] - the plugin
 	hook.Run("PluginUnloaded", self)
 end
 
@@ -219,7 +237,8 @@ end
 
 
 
---- TODO
+--- Tests this plugin. Will try to execute the `test.lua` file.
+-- @blocking
 function PLUGIN:Test()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
@@ -235,6 +254,8 @@ function PLUGIN:Test()
 	end
 
 	-- PreTest Hook
+	--- Called when a plugin is about to be tested.
+	-- @param plugin [Plugin] - the plugin
 	hook.Run("PluginTest", self)
 
 	-- Test
@@ -242,7 +263,9 @@ function PLUGIN:Test()
 	test()
 
 	-- PostUnload Hook
-	hook.Run("PluginTested", self, true)
+	--- Called when a plugin has been successfully tested.
+	-- @param plugin [Plugin] - the plugin
+	hook.Run("PluginTested", self)
 	return true
 end
 
@@ -250,56 +273,52 @@ end
 
 
 
---- TODO
+--- Returns whether this plugin can be tested. A plugin can be tested if it
+-- contains a `test.lua` file in its root.
+-- @returns testable [boolean] - can be tested
 function PLUGIN:IsTestable()
 	return file.Exists("plugins/" .. self._path .. "/test.lua", "LUA")
 end
 
-
-
---- TODO
+--- Returns whether this plugin is loaded.
+-- @returns loaded [boolean] - is loaded
 function PLUGIN:IsLoaded()
 	return self._loaded
 end
 
-
-
---- TODO
+--- Returns the path name of this plugin (e.g. 'cli').
+-- @returns pathName [string] - the path name
 function PLUGIN:GetPathName()
 	return self._path
 end
 
-
-
---- TODO
+--- Returns the identifier of this plugin. The identifier consists of the
+-- plugin author and the plugin name (e.g. `TASSIA710/Generic`).
+-- @returns identifier [string] - the identifier
 function PLUGIN:GetIdentifier()
 	return self._meta.author .. "/" .. self._meta.name
 end
 
-
-
---- TODO
+--- Returns a table of the dependencies of this plugin.
+-- @returns dependencies [table] - the dependencies
 function PLUGIN:GetDependencies()
 	return self._dependencies
 end
 
-
-
---- TODO
+--- Returns a table of the soft-dependencies of this plugin.
+-- @returns softDependencies [table] - the soft-dependencies
 function PLUGIN:GetSoftDependencies()
 	return self._dependenciesSoft
 end
 
-
-
---- TODO
+--- Returns the version of this plugin.
+-- @returns version [Version] - the version
 function PLUGIN:GetVersion()
 	return self._version
 end
 
-
-
---- TODO
+--- Returns whether this plugin has been forcefully disabled, e.g. via the meta file.
+-- @returns disabled [boolean] - is disabled
 function PLUGIN:IsDisabled()
 	if self._meta and self._meta.disabled then
 		return true
@@ -308,9 +327,10 @@ function PLUGIN:IsDisabled()
 	end
 end
 
-
-
---- TODO
+--- Attempts to resolve and load all dependencies of this plugin.
+-- @returns success [boolean] - whether dependencies were resolved successfully
+-- @returns reason [string] - the reason it failed, or `nil`
+-- @internal
 function PLUGIN:ResolveDependencies()
 	for _, dependency in pairs(self:GetDependencies()) do
 		local pl = jet.GetPlugin(dependency.identifier)
@@ -331,9 +351,10 @@ function PLUGIN:ResolveDependencies()
 	return true
 end
 
-
-
---- TODO
+--- Attempts to resolve and load all soft-dependencies of this plugin.
+-- @returns success [boolean] - whether soft-dependencies were resolved successfully
+-- @returns reason [string] - the reason it failed, or `nil`
+-- @internal
 function PLUGIN:ResolveSoftDependencies()
 	-- TODO
 	return true
@@ -341,7 +362,9 @@ end
 
 
 
---- TODO
+--- Creates a new plugin by its file path.
+-- @param path [string] - the file path
+-- @returns plugin [Plugin] - the plugin
 -- @internal
 function jet.GetPluginByPath(path)
 	return setmetatable({
