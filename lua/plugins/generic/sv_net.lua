@@ -12,6 +12,10 @@
 -- @direction SV <-- CL
 util.AddNetworkString("Jet:PlayerNetworkReady")
 
+--- Networked to make a notification pop up on the client.
+-- @direction SV --> CL
+util.AddNetworkString("Jet:Notify")
+
 
 
 net.Receive("Jet:PlayerNetworkReady", function(_, ply)

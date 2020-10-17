@@ -8,4 +8,7 @@
 
 
 -- Include files
+include("sh_constants.lua")
 include("cl_hooks.lua")
+include("cl_net.lua")
+include("cl_player.lua")
