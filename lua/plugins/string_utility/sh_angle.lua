@@ -11,6 +11,7 @@
 --- Generates an angle from a string.
 -- @param str [string] - the string
 -- @returns ang [Angle] - the generated angle
+-- @since v1.0.0
 function string.ToAngle(str)
 	str = string.Explode(";", str)
 	if #str ~= 3 then return nil end
@@ -26,6 +27,7 @@ end
 --- Generates a string from an angle.
 -- @param ang [Angle] - the angle
 -- @returns str [string] - the generated string
+-- @since v1.0.0
 function string.FromAngle(ang)
 	return ang.x .. ";" .. ang.y .. ";" .. ang.z
 end

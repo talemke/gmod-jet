@@ -27,24 +27,28 @@ AccessorFunc(VERSION, "_head", "Head", FORCE_STRING)
 
 --- Gets the short head of this version (usually the first 7 characters).
 -- @returns head [string] - the short head
+-- @since v1.0.0
 function VERSION:GetShortHead()
 	return string.sub(self:GetHead(), 0, 7)
 end
 
 --- Returns the small version string (e.g. '1.3')
 -- @returns str [string] - the small version string
+-- @since v1.0.0
 function VERSION:ToSmallString()
 	return self._major .. "." .. self._minor
 end
 
 --- Returns the version as a string (e.g. '1.3.2')
 -- @returns str [string] - the version string
+-- @since v1.0.0
 function VERSION:ToString()
 	return self:ToSmallString() .. "." .. self._patch
 end
 
 --- Returns the full version string (e.g. '1.3.2, build 71')
 -- @returns str [string] - the full version string
+-- @since v1.0.0
 function VERSION:ToFullString()
 	return self:ToString() .. ", build " .. self._build
 end
@@ -52,6 +56,7 @@ end
 --- Checks whether this current version does support the required target version.
 -- @param target [Version] - the version to check against
 -- @returns compatible [boolean] - is compatible?
+-- @since v1.0.0
 function VERSION:IsCompatible(target)
 	-- This looks very confusing and needs to be cleaned up (TODO).
 	if self._major ~= target._major then return false end
@@ -68,6 +73,7 @@ end
 -- @param head [string] (=-1) - the git head (must be the full head)
 -- @param branch [string] (="") - the git branch
 -- @returns version [Version] (="") - the created version
+-- @since v1.0.0
 function jet.CreateVersion(major, minor, patch, build, head, branch)
 	-- Asserts
 	assert(major ~= nil and isnumber(major))
@@ -91,6 +97,7 @@ end
 --- Parses version data from a version string.
 -- @param str [string] - the version string (e.g. '1.0.0')
 -- @returns version [Version] - the version, or `nil`
+-- @since v1.0.0
 function jet.ParseVersion(str)
 	if str[1] == "v" then str = string.sub(str, 2) end
 	local parsed = {string.match(str, "([%d])%.([%d])%.([%d])")}

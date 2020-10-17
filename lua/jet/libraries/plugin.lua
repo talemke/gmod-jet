@@ -14,6 +14,7 @@ local plugins = {}
 -- looks like this: `Author/PluginName`, e.g. `TASSIA710/CLI`
 -- @param name [string] - the plugin identifier
 -- @returns plugin [Plugin] - the plugin
+-- @since v1.0.0
 function jet.GetPlugin(name)
 	return plugins[name]
 end
@@ -22,6 +23,7 @@ end
 
 --- Returns a table of all plugins mapped to their identifiers.
 -- @returns plugins [table] - all plugins
+-- @since v1.0.0
 function jet.GetPlugins()
 	return plugins
 end
@@ -30,6 +32,7 @@ end
 
 --- Loads all plugins.
 -- @internal
+-- @since v1.0.0
 function jet.LoadPlugins()
 	log.Info("[Jet] Loading plugins...")
 
@@ -79,6 +82,7 @@ end
 
 
 --- Tests all plugins.
+-- @since v1.0.0
 function jet.TestPlugins()
 	log.Info("[Jet] Testing plugins...")
 	local total, success = 0, 0

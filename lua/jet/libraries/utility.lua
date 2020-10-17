@@ -11,6 +11,7 @@
 --- Parses a dependency string.
 -- @param str [string] - the dependency string
 -- @returns dependency [table] - dependency data, or `nil`
+-- @since v1.0.0
 function jet.ParseDependency(str)
 	str = string.Explode("/", str)
 	if #str ~= 2 then return nil end
@@ -32,6 +33,7 @@ end
 --- Behaves the same as #AddCSLuaFile. The only difference is, this doesn't
 -- throw any errors if the specified file doesn't exist.
 -- @param filePath [string] (="current file") - the file name
+-- @since v1.0.0
 function AddCSLuaFileSafe(filePath)
 	if not SERVER then return end
 	if file.Exists(filePath, "LUA") then
@@ -44,6 +46,7 @@ end
 --- Behaves the same as #include. The only difference is, this doesn't throw
 -- any errors if the specified file doesn't exist.
 -- @param file [string] - the file name
+-- @since v1.0.0
 function IncludeSafe(filePath)
 	if not filePath then return end
 	if file.Exists(filePath, "LUA") then

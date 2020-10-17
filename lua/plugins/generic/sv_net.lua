@@ -10,10 +10,12 @@
 
 --- Networked from the client to signal they are ready to send & receive net messages.
 -- @direction SV <-- CL
+-- @since v1.0.0
 util.AddNetworkString("Jet:PlayerNetworkReady")
 
 --- Networked to make a notification pop up on the client.
 -- @direction SV --> CL
+-- @since v1.0.0
 util.AddNetworkString("Jet:Notify")
 
 

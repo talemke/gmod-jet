@@ -43,6 +43,7 @@ end
 
 --- Logs a message with the `INFO` level.
 -- @param msg [varargs] - the message to log
+-- @since v1.0.0
 function log.Info(...)
 	if not logInfo then return end
 	if SERVER and useAnsi then print("\27[38;2;255;255;255m" .. varargsToString("  INFO", ...) .. "\27[0m")
@@ -53,6 +54,7 @@ end
 
 --- Logs a message with the `WARN` level.
 -- @param msg [varargs] - the message to log
+-- @since v1.0.0
 function log.Warning(...)
 	if not logWarning then return end
 	if SERVER and useAnsi then print("\27[38;2;255;191;0m" .. varargsToString("  WARN", ...) .. "\27[0m")
@@ -63,6 +65,7 @@ end
 
 --- Logs a message with the `ERROR` level.
 -- @param msg [varargs] - the message to log
+-- @since v1.0.0
 function log.Error(...)
 	if not logError then return end
 	if SERVER and useAnsi then print("\27[38;2;255;0;0m" .. varargsToString(" ERROR", ...) .. "\27[0m")
@@ -73,6 +76,7 @@ end
 
 --- Logs a message with the `SEVERE` level.
 -- @param msg [varargs] - the message to log
+-- @since v1.0.0
 function log.Severe(...)
 	if SERVER and useAnsi then print("\27[101;93m" .. varargsToString("SEVERE", ...) .. "\27[0m")
 	else MsgC(Color(255, 0, 0), varargsToString("SEVERE", ...) .. "\n") end
@@ -82,6 +86,7 @@ end
 
 --- Logs a message with the `DEBUG` level.
 -- @param msg [varargs] - the message to log
+-- @since v1.0.0
 function log.Debug(...)
 	if not logDebug then return end
 	if SERVER and useAnsi then print("\27[38;2;127;127;127m" .. varargsToString(" DEBUG", ...) .. "\27[0m")
@@ -92,6 +97,7 @@ end
 
 --- Logs a message with the `NET` level.
 -- @param msg [varargs] - the message to log
+-- @since v1.0.0
 function log.Net(...)
 	if not logNet then return end
 	if SERVER and useAnsi then print("\27[38;2;127;127;255m" .. varargsToString("   NET", ...) .. "\27[0m")

@@ -22,6 +22,7 @@ PLUGIN._loaded = false
 --- Initializes the plugin, including reading the meta file of the pluign.
 -- Meta information about a plugin is not available before it is initialized.
 -- @internal
+-- @since v1.0.0
 function PLUGIN:Init()
 	-- Assert
 	assert(self._path ~= nil, "Path not specified.")
@@ -130,6 +131,7 @@ end
 -- `cl_init.lua` files in this order.
 -- @returns success [boolean] - successfully loaded?
 -- @returns reason [string] - the reason the load failed, or `nil`
+-- @since v1.0.0
 function PLUGIN:Load()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
@@ -197,6 +199,7 @@ end
 
 --- Unloads this plugin. Will also execute the `sh_unload.lua`, `sv_unload.lua`
 -- and `cl_unload.lua` files in this order.
+-- @since v1.0.0
 function PLUGIN:Unload()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
@@ -239,6 +242,7 @@ end
 
 --- Tests this plugin. Will try to execute the `test.lua` file.
 -- @blocking
+-- @since v1.0.0
 function PLUGIN:Test()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
@@ -276,18 +280,21 @@ end
 --- Returns whether this plugin can be tested. A plugin can be tested if it
 -- contains a `test.lua` file in its root.
 -- @returns testable [boolean] - can be tested
+-- @since v1.0.0
 function PLUGIN:IsTestable()
 	return file.Exists("plugins/" .. self._path .. "/test.lua", "LUA")
 end
 
 --- Returns whether this plugin is loaded.
 -- @returns loaded [boolean] - is loaded
+-- @since v1.0.0
 function PLUGIN:IsLoaded()
 	return self._loaded
 end
 
 --- Returns the path name of this plugin (e.g. 'cli').
 -- @returns pathName [string] - the path name
+-- @since v1.0.0
 function PLUGIN:GetPathName()
 	return self._path
 end
@@ -295,30 +302,35 @@ end
 --- Returns the identifier of this plugin. The identifier consists of the
 -- plugin author and the plugin name (e.g. `TASSIA710/Generic`).
 -- @returns identifier [string] - the identifier
+-- @since v1.0.0
 function PLUGIN:GetIdentifier()
 	return self._meta.author .. "/" .. self._meta.name
 end
 
 --- Returns a table of the dependencies of this plugin.
 -- @returns dependencies [table] - the dependencies
+-- @since v1.0.0
 function PLUGIN:GetDependencies()
 	return self._dependencies
 end
 
 --- Returns a table of the soft-dependencies of this plugin.
 -- @returns softDependencies [table] - the soft-dependencies
+-- @since v1.0.0
 function PLUGIN:GetSoftDependencies()
 	return self._dependenciesSoft
 end
 
 --- Returns the version of this plugin.
 -- @returns version [Version] - the version
+-- @since v1.0.0
 function PLUGIN:GetVersion()
 	return self._version
 end
 
 --- Returns whether this plugin has been forcefully disabled, e.g. via the meta file.
 -- @returns disabled [boolean] - is disabled
+-- @since v1.0.0
 function PLUGIN:IsDisabled()
 	if self._meta and self._meta.disabled then
 		return true
@@ -331,6 +343,7 @@ end
 -- @returns success [boolean] - whether dependencies were resolved successfully
 -- @returns reason [string] - the reason it failed, or `nil`
 -- @internal
+-- @since v1.0.0
 function PLUGIN:ResolveDependencies()
 	for _, dependency in pairs(self:GetDependencies()) do
 		local pl = jet.GetPlugin(dependency.identifier)
@@ -355,6 +368,7 @@ end
 -- @returns success [boolean] - whether soft-dependencies were resolved successfully
 -- @returns reason [string] - the reason it failed, or `nil`
 -- @internal
+-- @since v1.0.0
 function PLUGIN:ResolveSoftDependencies()
 	-- TODO
 	return true
@@ -366,6 +380,7 @@ end
 -- @param path [string] - the file path
 -- @returns plugin [Plugin] - the plugin
 -- @internal
+-- @since v1.0.0
 function jet.GetPluginByPath(path)
 	return setmetatable({
 		_path = path
