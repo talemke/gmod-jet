@@ -10,6 +10,9 @@ local PLUGIN = {}
 PLUGIN.__index = PLUGIN
 PLUGIN._meta = nil
 PLUGIN._path = nil
+PLUGIN._dependencies = {}
+PLUGIN._dependenciesSoft = {}
+PLUGIN._versionData = nil
 PLUGIN._loaded = false
 
 
@@ -62,17 +65,38 @@ function PLUGIN:Init()
 	if not meta.disabled then
 		meta.disabled = false
 	end
-	if not meta.dependencies then
-		meta.dependencies = {}
-	end
 	if not meta.soft_dependencies then
 		meta.soft_dependencies = {}
 	end
 
 	-- Parse version
-	meta.versionData = jet.ParseVersion(meta.version)
-	if not meta.versionData then
+	self._versionData = jet.ParseVersion(meta.version)
+	if not self._versionData then
 		return false, "Cannot determine version: " .. meta.version
+	end
+
+	-- Parse dependencies
+	self._dependencies = {}
+	meta.dependencies = meta.dependencies or {}
+	for _, dependency in pairs(meta.dependencies) do
+		local parsed = jet.ParseDependency(dependency)
+		if parsed then
+			table.insert(self._dependencies, parsed)
+		else
+			return false, "Cannot determine dependency: " .. dependency
+		end
+	end
+
+	-- Parse soft-dependencies
+	self.soft_dependencies = {}
+	meta.soft_dependencies = meta.soft_dependencies or {}
+	for _, dependency in pairs(meta.soft_dependencies) do
+		local parsed = jet.ParseDependency(dependency)
+		if parsed then
+			table.insert(self._dependenciesSoft, parsed)
+		else
+			return false, "Cannot determine soft-dependency: " .. dependency
+		end
 	end
 
 	-- Download files
@@ -100,13 +124,38 @@ function PLUGIN:Load()
 	-- Assert
 	assert(self._meta ~= nil, "Plugin not initialized.")
 	assert(self._path ~= nil, "Plugin not initialized.")
-	assert(not self._loaded, "Plugin already loaded.")
+
+	-- Disabled?
+	if self:IsDisabled() then
+		return false, "Plugin is disabled."
+	end
+
+	-- Already loaded?
+	if self._loaded then
+		return true
+	end
 
 	-- PreLoad Hook
 	hook.Run("PluginLoad", self)
 
 	-- Prepare
 	local pluginPath = "plugins/" .. self._path
+
+	-- Resolve dependencies
+	do
+		local success, reason = self:ResolveDependencies()
+		if not success then
+			return false, reason
+		end
+	end
+
+	-- Resolve soft-dependencies
+	do
+		local success, reason = self:ResolveSoftDependencies()
+		if not success then
+			return false, reason
+		end
+	end
 
 	-- Load Shared
 	IncludeSafe(pluginPath .. "/shared.lua")
@@ -167,6 +216,8 @@ end
 
 
 
+
+
 --- TODO
 function PLUGIN:IsLoaded()
 	return self._loaded
@@ -189,12 +240,80 @@ end
 
 
 --- TODO
+function PLUGIN:GetDependencies()
+	return self._dependencies
+end
+
+
+
+--- TODO
+function PLUGIN:GetSoftDependencies()
+	return self._dependenciesSoft
+end
+
+
+
+--- TODO
+function PLUGIN:GetVersion()
+	return self._meta.version
+end
+
+
+
+--- TODO
+function PLUGIN:GetVersionData()
+	return self._versionData
+end
+
+
+
+--- TODO
+function PLUGIN:IsVersionCompatible(target)
+	return self._versionData[1] == target[1]
+		and self._versionData[2] >= target[2]
+		and self._versionData[3] >= target[3]
+end
+
+
+
+--- TODO
 function PLUGIN:IsDisabled()
 	if self._meta and self._meta.disabled then
 		return true
 	else
 		return false
 	end
+end
+
+
+
+--- TODO
+function PLUGIN:ResolveDependencies()
+	for _, dependency in pairs(self:GetDependencies()) do
+		local pl = jet.GetPlugin(dependency.identifier)
+
+		-- Check available
+		if not pl then
+			return false, "Dependency " .. dependency.identifier .. " is unavailable."
+		end
+
+		-- Check version compability
+		if not pl:IsVersionCompatible(dependency.version) then
+			return false, "Required version of " .. dependency.identifier .. " is not available; required: "
+						.. dependency.versionString .. " - available: " .. pl:GetVersion()
+		end
+
+		pl:Load()
+	end
+	return true
+end
+
+
+
+--- TODO
+function PLUGIN:ResolveSoftDependencies()
+	-- TODO
+	return true
 end
 
 

@@ -37,7 +37,9 @@ function jet.ParseDependency(str)
 	return {
 		author = author,
 		name = name[1],
-		version = version
+		identifier = author .. "/" .. name[1],
+		version = version,
+		versionString = name[2]
 	}
 end
 
