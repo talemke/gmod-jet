@@ -65,6 +65,7 @@ end
 --- Returns the internal table of the stack.
 -- @returns stack [table] - the internal table
 -- @internal
+-- @deprecated
 -- @since v1.0.0
 function STACK:_InternalTable()
 	return self._data
