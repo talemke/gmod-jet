@@ -7,7 +7,5 @@
 --]]
 
 jet.AddCliCommand("version", function(args)
-	local version = string.format("%s | %s @ %s",
-					jet.versionFull, jet.versionBranch, jet.versionHeadShort)
-	print("Running Jet v" .. version)
+	print("Running Jet v" .. jet.version:ToFullString())
 end, "", "Shows the current version.")

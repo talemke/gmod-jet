@@ -1,6 +1,6 @@
 
 --[[
-	Jet -> Logging (Shared)
+	Jet -> Logging Library (Shared)
 	by Tassilo (@TASSIA710)
 
 	This script adds a nice logging functionality.

@@ -11,24 +11,24 @@
 jet = {}
 
 
+-- Classes
+AddCSLuaFile("classes/plugin.lua")
+include("classes/plugin.lua")
+AddCSLuaFile("classes/version.lua")
+include("classes/version.lua")
+
+
 -- Version
-AddCSLuaFile("sh_version.lua")
-include("sh_version.lua")
+jet.version = jet.CreateVersion(0, 0, 0, 0, "b0a64a74e51cb54a5369c3e1d5c0295b1931d1b8", "main")
 
 
--- Utility
-AddCSLuaFile("sh_utility.lua")
-include("sh_utility.lua")
-
-
--- Logging library
-AddCSLuaFile("sh_logging.lua")
-include("sh_logging.lua")
-
-
--- Plugin library
-AddCSLuaFile("libraries/plugin/shared.lua")
-include("libraries/plugin/shared.lua")
+-- Libraries
+AddCSLuaFile("libraries/logging.lua")
+include("libraries/logging.lua")
+AddCSLuaFile("libraries/plugin.lua")
+include("libraries/plugin.lua")
+AddCSLuaFile("libraries/utility.lua")
+include("libraries/utility.lua")
 
 
 -- Load plugins

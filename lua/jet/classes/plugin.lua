@@ -1,6 +1,6 @@
 
 --[[
-	Jet -> Plugin Library -> Plugin MetaTable (Shared)
+	Jet -> Plugin Class (Shared)
 	by Tassilo (@TASSIA710)
 
 	This file contains the plugin class.
@@ -12,7 +12,7 @@ PLUGIN._meta = nil
 PLUGIN._path = nil
 PLUGIN._dependencies = {}
 PLUGIN._dependenciesSoft = {}
-PLUGIN._versionData = nil
+PLUGIN._version = nil
 PLUGIN._loaded = false
 
 
@@ -70,8 +70,8 @@ function PLUGIN:Init()
 	end
 
 	-- Parse version
-	self._versionData = jet.ParseVersion(meta.version)
-	if not self._versionData then
+	self._version = jet.ParseVersion(meta.version)
+	if not self._version then
 		return false, "Cannot determine version: " .. meta.version
 	end
 
@@ -255,23 +255,7 @@ end
 
 --- TODO
 function PLUGIN:GetVersion()
-	return self._meta.version
-end
-
-
-
---- TODO
-function PLUGIN:GetVersionData()
-	return self._versionData
-end
-
-
-
---- TODO
-function PLUGIN:IsVersionCompatible(target)
-	return self._versionData[1] == target[1]
-		and self._versionData[2] >= target[2]
-		and self._versionData[3] >= target[3]
+	return self._version
 end
 
 
@@ -298,9 +282,9 @@ function PLUGIN:ResolveDependencies()
 		end
 
 		-- Check version compability
-		if not pl:IsVersionCompatible(dependency.version) then
+		if not pl:GetVersion():IsCompatible(dependency.version) then
 			return false, "Required version of " .. dependency.identifier .. " is not available; required: "
-						.. dependency.versionString .. " - available: " .. pl:GetVersion()
+							.. dependency.version:ToFullString() .. " - available: " .. pl:GetVersion():ToFullString()
 		end
 
 		pl:Load()

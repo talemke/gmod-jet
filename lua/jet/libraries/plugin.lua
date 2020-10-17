@@ -6,9 +6,6 @@
 	This library handles all plugins.
 --]]
 
-AddCSLuaFile("sh_plugin.lua")
-include("sh_plugin.lua")
-
 local plugins = {}
 
 
@@ -63,9 +60,9 @@ function jet.LoadPlugins()
 	log.Debug("[Jet] Continuing load process...")
 	for _, pl in pairs(plugins) do
 		if pl:IsDisabled() then
-			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " (disabled)")
+			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " @ v" .. pl:GetVersion():ToString() .. " (disabled)")
 		else
-			log.Debug("[Jet] - " .. pl:GetIdentifier())
+			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " @ v" .. pl:GetVersion():ToString())
 			pl:Load()
 			loaded = loaded + 1
 		end

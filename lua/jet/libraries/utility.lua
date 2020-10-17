@@ -1,25 +1,10 @@
 
 --[[
-	Jet -> Utility (Shared)
+	Jet -> Utility Library (Shared)
 	by Tassilo (@TASSIA710)
 
 	This file contains all the utility required by the plugins system.
 --]]
-
-
-
---- Parses version data from a version string.
--- @param str [string] - the version string (e.g. '1.0.0')
--- @returns version [table] - the version data, or `nil`
-function jet.ParseVersion(str)
-	if str[1] == "v" then str = string.sub(str, 2) end
-	local parsed = {string.match(str, "([%d])%.([%d])%.([%d])")}
-	if not parsed[1] and not parsed[2] and not parsed[3] then
-		return nil
-	else
-		return parsed
-	end
-end
 
 
 
@@ -38,8 +23,7 @@ function jet.ParseDependency(str)
 		author = author,
 		name = name[1],
 		identifier = author .. "/" .. name[1],
-		version = version,
-		versionString = name[2]
+		version = version
 	}
 end
 
