@@ -56,6 +56,7 @@ function jet.AddCliCommand(name, callback, usage, description)
 		usage = usage,
 		description = description
 	}
+	commands[string.lower(name)] = cmd
 	table.insert(commandsRegistered, cmd)
 end
 
