@@ -34,7 +34,7 @@ end
 
 
 
---- Returns a new string the consists of the given char being repeated the
+--- Returns a new string that consists of the given char being repeated the
 -- given amount of times.
 -- @param amount [number] - how often to repeat?
 -- @param char [string] - the string to repeat
