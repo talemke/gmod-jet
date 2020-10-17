@@ -104,7 +104,7 @@ end
 
 -- >> ServerLog Override
 function ServerLog(msg)
-	Log.Debug("Server Log: " .. msg)
+	log.Debug("Server Log: " .. msg)
 end
 -- >> ServerLog Override
 
@@ -118,17 +118,17 @@ local default_Error = Error
 local default_ErrorNoHalt = ErrorNoHalt
 
 function error(msg, error_level)
-	Log.Severe(msg)
+	log.Severe(msg)
 	default_error(msg, error_level)
 end
 
 function Error(...)
-	Log.Error(varargsToString(...))
+	log.Error(varargsToString(...))
 	default_Error(...)
 end
 
 function ErrorNoHalt(...)
-	Log.Error(varargsToString(...))
+	log.Error(varargsToString(...))
 	default_ErrorNoHalt(...)
 end
 -- >> Error Overrides
@@ -145,9 +145,9 @@ if logNet then
 	function net.Start(msg, unreliable)
 		default_NetStart(msg, unreliable)
 		if SERVER then
-			Log.Net("SV --> CL | " .. msg)
+			log.Net("SV --> CL | " .. msg)
 		else
-			Log.Net("SV <-- CL | " .. msg)
+			log.Net("SV <-- CL | " .. msg)
 		end
 	end
 
@@ -155,9 +155,9 @@ if logNet then
 		default_NetReceive(msg, function(len, ply)
 			callback(len, ply)
 			if SERVER then
-				Log.Net("SV <-- CL | " .. msg)
+				log.Net("SV <-- CL | " .. msg)
 			else
-				Log.Net("SV --> CL | " .. msg)
+				log.Net("SV --> CL | " .. msg)
 			end
 		end)
 	end
