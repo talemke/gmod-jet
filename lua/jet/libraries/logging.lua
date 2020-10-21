@@ -17,7 +17,9 @@ local logNet = false
 
 
 local function timestamp()
-	return os.date("!%H:%M:%S")
+	local ms = RealTime() % 1
+	ms = math.floor(ms * 1000)
+	return os.date("!%H:%M:%S") .. "." .. ms
 end
 
 local function varargsToString(level, ...)
