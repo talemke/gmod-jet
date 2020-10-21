@@ -1,3 +1,6 @@
 # IntelliJ
 .idea/
 *.iml
+
+# Configuration
+lua/jet/config.lua
