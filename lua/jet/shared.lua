@@ -9,6 +9,18 @@
 
 -- Base variable
 jet = {}
+jet.bootTime = RealTime()
+jet.continueBooting = true
+
+
+-- Config
+if file.Exists("jet/config.lua", "LUA") then
+	AddCSLuaFile("config.lua")
+	jet.config = include("config.lua")
+else
+	AddCSLuaFile("config.example.lua")
+	jet.config = include("config.example.lua")
+end
 
 
 -- Classes
@@ -18,10 +30,6 @@ AddCSLuaFile("classes/version.lua")
 include("classes/version.lua")
 
 
--- Version
-jet.version = jet.CreateVersion(0, 0, 0, 0, "b0a64a74e51cb54a5369c3e1d5c0295b1931d1b8", "main")
-
-
 -- Libraries
 AddCSLuaFile("libraries/logging.lua")
 include("libraries/logging.lua")
@@ -29,6 +37,8 @@ AddCSLuaFile("libraries/plugin.lua")
 include("libraries/plugin.lua")
 AddCSLuaFile("libraries/utility.lua")
 include("libraries/utility.lua")
+AddCSLuaFile("libraries/version.lua")
+include("libraries/version.lua")
 
 
 -- Load plugins
