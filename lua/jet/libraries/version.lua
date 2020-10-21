@@ -9,7 +9,7 @@
 
 -- Define variables
 jet.target = 201016
-jet.version = jet.CreateVersion(0, 0, 0, 0, "b0a64a74e51cb54a5369c3e1d5c0295b1931d1b8", "main")
+jet.version = jet.CreateVersion(1, 0, 0, 0, "b0a64a74e51cb54a5369c3e1d5c0295b1931d1b8", "main")
 
 
 -- Too old?
