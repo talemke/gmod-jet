@@ -172,16 +172,27 @@ function PLUGIN:Load()
 	end
 
 	-- Load Shared
-	IncludeSafe(pluginPath .. "/shared.lua")
+	do
+		local result, reason = IncludeSafe(pluginPath .. "/shared.lua")
+		if result == false and isstring(reason) then
+			return false, reason
+		end
+	end
 
 	-- Load ServerSide
 	if SERVER then
-		IncludeSafe(pluginPath .. "/sv_init.lua")
+		local result, reason = IncludeSafe(pluginPath .. "/sv_init.lua")
+		if result == false and isstring(reason) then
+			return false, reason
+		end
 	end
 
 	-- Load ClientSide
 	if CLIENT then
-		IncludeSafe(pluginPath .. "/cl_init.lua")
+		local result, reason = IncludeSafe(pluginPath .. "/cl_init.lua")
+		if result == false and isstring(reason) then
+			return false, reason
+		end
 	end
 
 	-- Cleanup
