@@ -3,7 +3,7 @@ A plugin & dependency system for Garry's Mod addons.
 
 
 
-### Documentation
+## Documentation
 
 All functions/hooks/classes are well documented. You can find the
 documentation [here](https://ldoc.tassia.net/TASSIA710/Jet/main/).
@@ -13,7 +13,7 @@ be working.
 
 
 
-### Features
+## Features
 
 - **Command Line Interface**\
   *Interact with the Jet installation through our CLI.\
@@ -29,7 +29,7 @@ be working.
 
 
 
-### Pre-Installed Plugins
+## Pre-Installed Plugins
 
 - [TASSIA710/CLI](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/cli)\
   *The Jet command line interface.*
@@ -45,7 +45,7 @@ be working.
 
 
 
-### Console Commands
+## Console Commands
 
 - `jet benchmark <iterations> <expression>`\
   *Benchmark an expression.*
