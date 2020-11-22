@@ -77,6 +77,12 @@ function jet.LoadPlugins()
 	else
 		log.Info("[Jet] Loaded " .. loaded .. " out of " .. #pluginsFound .. " available plugins.")
 	end
+
+	-- Run post hook
+	--- Called after all plugins have been loaded.
+	-- @param pluginsFound [number] - how many plugins were available to be loaded
+	-- @param loaded [number] - how many plugins were actually loaded
+	hook.Run("PluginsLoaded", #pluginsFound, loaded)
 end
 
 
