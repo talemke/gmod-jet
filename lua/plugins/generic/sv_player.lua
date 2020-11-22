@@ -24,3 +24,17 @@ function PLAYER:Notify(text, class, length)
 	net.WriteUInt(length, 8)
 	net.Send(self)
 end
+
+
+
+--- Makes the player open a URL.
+-- @param url [string] - the url
+-- @note This will still show the warning screen clientside.
+-- @realm shared
+-- @localonly
+-- @since v1.0.0
+function PLAYER:OpenURL(url)
+	net.Start("Jet:OpenURL")
+	net.WriteString(url)
+	net.Send(self)
+end

@@ -18,6 +18,11 @@ util.AddNetworkString("Jet:PlayerNetworkReady")
 -- @since v1.0.0
 util.AddNetworkString("Jet:Notify")
 
+--- Networked to make a client open a URL.
+-- @direction SV --> CL
+-- @since v1.0.0
+util.AddNetworkString("Jet:OpenURL")
+
 
 
 net.Receive("Jet:PlayerNetworkReady", function(_, ply)
