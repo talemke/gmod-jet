@@ -14,14 +14,27 @@ local pluginCache = {}
 
 
 
+-- Define functions
+local load = include("sv_func_load.lua")
+local save = include("sv_func_save.lua")
+
+
+
 -- TODO: Documentation
 function config.LoadConfig()
-	-- TODO
+	local data = load()
+	if data then
+		globalCache = data.global
+		pluginCache = data.sections
+		return true
+	else
+		return false
+	end
 end
 
 -- TODO: Documentation
 function config.SaveConfig()
-	-- TODO
+	return save(globalCache, pluginCache)
 end
 
 -- TODO: Documentation
@@ -63,5 +76,8 @@ config.LoadConfig()
 
 -- Add missing config options
 hook.Run("PluginsLoaded", "PostLoadConfig", function()
-	config.SaveConfig()
+	local success = config.SaveConfig()
+	if not success then
+		log.Error("Failed to save config.")
+	end
 end)
