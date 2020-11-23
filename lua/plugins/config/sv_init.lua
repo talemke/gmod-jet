@@ -74,12 +74,14 @@ end
 
 -- TODO: Documentation
 function config.AddPlugin(plugin, key, default, types, description)
+	pluginCache[plugin] = pluginCache[plugin] or {}
 	pluginCache[plugin][key] = pluginCache[plugin][key] or default
 	-- TODO
 end
 
 -- TODO: Documentation
 function config.GetPlugin(plugin, key, default)
+	pluginCache[plugin] = pluginCache[plugin] or {}
 	if pluginCache[plugin][key] ~= nil then
 		return pluginCache[plugin][key]
 	else
@@ -89,6 +91,7 @@ end
 
 -- TODO: Documentation
 function config.SetPlugin(plugin, key, value)
+	pluginCache[plugin] = pluginCache[plugin] or {}
 	pluginCache[plugin][key] = value
 end
 
