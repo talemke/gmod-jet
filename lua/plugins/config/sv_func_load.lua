@@ -46,7 +46,7 @@ end
 return function(fileName, gamePath)
 
     -- Fallback values
-    filePath = filePath or "jet/config.ini"
+    fileName = fileName or "jet/config.ini"
     gamePath = gamePath or "DATA"
 
     -- Read the file
