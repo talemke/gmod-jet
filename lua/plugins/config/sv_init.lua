@@ -72,6 +72,33 @@ end
 
 
 
+-- TODO: Documentation
+function config.AddPlugin(plugin, key, default, types, description)
+	pluginCache[plugin][key] = pluginCache[plugin][key] or default
+	-- TODO
+end
+
+-- TODO: Documentation
+function config.GetPlugin(plugin, key, default)
+	if pluginCache[plugin][key] ~= nil then
+		return pluginCache[plugin][key]
+	else
+		return default
+	end
+end
+
+-- TODO: Documentation
+function config.SetPlugin(plugin, key, value)
+	pluginCache[plugin][key] = value
+end
+
+-- TODO: Documentation
+function config.UnsetPlugin(plugin, key)
+	config.SetPlugin(plugin, key, nil)
+end
+
+
+
 -- Actually load the config
 config.LoadConfig()
 
