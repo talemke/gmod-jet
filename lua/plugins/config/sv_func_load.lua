@@ -31,7 +31,7 @@ local function parseLine(line)
     -- Key/Value?
     local split = string.Explode("=", line)
     if #split < 2 then return nil, nil end
-    local key = string.Trim(key)
+    local key = string.Trim(split[1])
     local value = string.Trim(string.sub(line, string.len(split[1]) + 2))
     return key, value
 end
