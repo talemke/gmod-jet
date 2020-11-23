@@ -23,6 +23,9 @@ end
 -- @returns success [boolean] - `true` on success, `false` on failure
 return function(global, sections, fileName)
 
+    -- Fallback values
+    fileName = fileName or "jet/config.ini"
+
     -- Open file
     local file = file.Open(fileName, "w", "DATA")
     if not file then return false end
