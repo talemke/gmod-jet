@@ -52,6 +52,7 @@ return function(fileName, gamePath)
     -- Read the file
     local data = file.Read(fileName, gamePath)
     if not data then return nil end
+    data = string.Explode("\n", data)
 
     -- Define variables
     local global = {}
