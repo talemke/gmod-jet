@@ -31,17 +31,17 @@ function config.LoadConfig()
 		pluginCache = data.sections or {}
 
 		-- Fill missing global values
-		for key, data in pairs(globalLayout) do
+		for key, value in pairs(globalLayout) do
 			if not globalCache[key] then
-				config.SetGlobal(key, data.default)
+				config.SetGlobal(key, value.default)
 			end
 		end
 
 		-- Fill missing plugin values
 		for plugin, layout in pairs(pluginLayout) do
-			for key, data in pairs(layout) do
+			for key, value in pairs(layout) do
 				if not pluginCache[plugin][key] then
-					config.SetPlugin(plugin, key, data.default)
+					config.SetPlugin(plugin, key, value.default)
 				end
 			end
 		end
