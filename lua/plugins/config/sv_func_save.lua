@@ -31,16 +31,16 @@ return function(global, sections, fileName)
     if not file then return false end
 
     -- Write global data
-    for k, v in pairs(global or {}) do
+    for k, v in pairs(global) do
         print(k, v)
         file:Write(formatKeyValue(k, v))
     end
 
     -- Write sections
-    for section, data in pairs(sections or {}) do
+    for section, data in pairs(sections) do
         print(section)
         file:Write("\n" .. formatSection(section))
-        for k, v in pairs(data or {}) do
+        for k, v in pairs(data) do
             print(k, v)
             file:Write(formatKeyValue(k, v))
         end
