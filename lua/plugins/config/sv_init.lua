@@ -132,6 +132,18 @@ end
 
 
 
+-- TODO: Documentation
+function config.GetGlobalCache()
+	return globalCache
+end
+
+-- TODO: Documentation
+function config.GetPluginsCache()
+	return pluginCache
+end
+
+
+
 -- Actually load the config
 do
 	local success = config.LoadConfig()
