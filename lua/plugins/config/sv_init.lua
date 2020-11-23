@@ -133,7 +133,12 @@ end
 
 
 -- Actually load the config
-config.LoadConfig()
+do
+	local success = config.LoadConfig()
+	if not success then
+		log.Error("Failed to load config.")
+	end
+end
 
 -- Add missing config options
 hook.Add("PluginsLoaded", "PostLoadConfig", function()
