@@ -76,7 +76,7 @@ end
 config.LoadConfig()
 
 -- Add missing config options
-hook.Run("PluginsLoaded", "PostLoadConfig", function()
+hook.Add("PluginsLoaded", "PostLoadConfig", function()
 	local success = config.SaveConfig()
 	if not success then
 		log.Error("Failed to save config.")
