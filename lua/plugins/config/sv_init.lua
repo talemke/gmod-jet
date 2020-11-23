@@ -24,8 +24,8 @@ local save = include("sv_func_save.lua")
 function config.LoadConfig()
 	local data = load()
 	if data then
-		globalCache = data.global
-		pluginCache = data.sections
+		globalCache = data.global or {}
+		pluginCache = data.sections or {}
 		return true
 	else
 		return false
