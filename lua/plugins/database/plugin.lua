@@ -4,6 +4,6 @@ return {
 	description = "Goal of this plugin is to allow for global database connections, instead of each addon using their own.",
 	version = "1.0.0",
 	dependencies = {
-		"TASSIA710/Config"
+		"TASSIA710/Configuration"
 	}
 }
