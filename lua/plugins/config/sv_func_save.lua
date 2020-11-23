@@ -46,4 +46,5 @@ return function(global, sections, fileName)
     -- Flush & close
     file:Flush()
     file:Close()
+    return true
 end
