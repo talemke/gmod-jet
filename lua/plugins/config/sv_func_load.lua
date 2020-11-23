@@ -39,14 +39,14 @@ end
 
 
 --- Loads configuration data from a file.
--- @param fileName [string] (="jet/config.ini") - the file name
+-- @param fileName [string] (="jet/config.txt") - the file name
 -- @param gamePath [string] (="DATA") - the game directory
 -- @returns global [table] - the global values
 -- @returns sections [table] - section specific values
 return function(fileName, gamePath)
 
     -- Fallback values
-    fileName = fileName or "jet/config.ini"
+    fileName = fileName or "jet/config.txt"
     gamePath = gamePath or "DATA"
 
     -- Read the file

@@ -19,12 +19,12 @@ end
 --- Saves configuration data to a file.
 -- @param global [table] - the global config data
 -- @param sections [table] - sections
--- @param fileName [string] (="jet/config.ini") - the file name
+-- @param fileName [string] (="jet/config.txt") - the file name
 -- @returns success [boolean] - `true` on success, `false` on failure
 return function(global, sections, fileName)
 
     -- Fallback values
-    fileName = fileName or "jet/config.ini"
+    fileName = fileName or "jet/config.txt"
 
     -- Open file
     local file = file.Open(fileName, "w", "DATA")
