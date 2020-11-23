@@ -34,6 +34,7 @@ end
 
 -- TODO: Documentation
 function config.SaveConfig()
+	file.CreateDir("jet")
 	return save(globalCache, pluginCache)
 end
 
