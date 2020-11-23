@@ -1,12 +1,12 @@
 return {
-	author = "Tassilo",
+	author = "Jet",
 	name = "CLI",
 	description = "The Jet command line interface.",
 	version = "1.0.0",
 	dependencies = {
-		"Tassilo/StringUtility@1.0.0"
+		"Jet/StringUtility@1.0.0"
 	},
 	softDependencies = {
-		"Tassilo/Updater@1.0.0"
+		"Jet/Updater@1.0.0"
 	}
 }
