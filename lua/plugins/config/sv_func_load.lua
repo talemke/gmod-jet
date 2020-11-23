@@ -65,6 +65,7 @@ return function(fileName, gamePath)
         if v then
             if k then
                 if section then
+                    sections[section] = sections[section] or {}
                     sections[section][k] = v
                 else
                     global[k] = v
