@@ -98,7 +98,6 @@ end
 
 -- TODO: Documentation
 function config.AddPlugin(plugin, key, default, types, description)
-	print(key, default)
 	pluginLayout[plugin] = pluginLayout[plugin] or {}
 	pluginLayout[plugin][key] = {
 		key = key,
