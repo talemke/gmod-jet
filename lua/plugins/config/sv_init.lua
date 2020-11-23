@@ -9,7 +9,9 @@
 
 -- Define variables
 config = {}
+local globalLayout = {}
 local globalCache = {}
+local pluginLayout = {}
 local pluginCache = {}
 
 
@@ -24,8 +26,25 @@ local save = include("sv_func_save.lua")
 function config.LoadConfig()
 	local data = load()
 	if data then
+		-- Store
 		globalCache = data.global or {}
 		pluginCache = data.sections or {}
+
+		-- Fill missing global values
+		for key, data in pairs(globalLayout) do
+			if not globalCache[key] then
+				globalCache[key] = data.default
+			end
+		end
+
+		-- Fill missing plugin values
+		for plugin, layout in pairs(pluginLayout) do
+			for key, data in pairs(layout) do
+				if not pluginCache[plugin][key] then
+					pluginCache[plugin][key] = data.default
+				end
+			end
+		end
 		return true
 	else
 		return false
@@ -47,8 +66,13 @@ end
 
 -- TODO: Documentation
 function config.AddGlobal(key, default, types, description)
+	globalLayout[key] = {
+		key = key,
+		default = default,
+		types = Either(isstring(types), {types}, types),
+		description = description
+	}
 	globalCache[key] = globalCache[key] or default
-	-- TODO
 end
 
 -- TODO: Documentation
@@ -74,9 +98,15 @@ end
 
 -- TODO: Documentation
 function config.AddPlugin(plugin, key, default, types, description)
+	pluginLayout[plugin] = pluginLayout[plugin] or {}
+	pluginLayout[plugin][key] = {
+		key = key,
+		default = default,
+		types = Either(isstring(types), {types}, types),
+		description = description
+	}
 	pluginCache[plugin] = pluginCache[plugin] or {}
 	pluginCache[plugin][key] = pluginCache[plugin][key] or default
-	-- TODO
 end
 
 -- TODO: Documentation
