@@ -32,6 +32,7 @@ function config.LoadConfig()
 
 		-- Fill missing global values
 		for key, data in pairs(globalLayout) do
+			print(key, data)
 			if not globalCache[key] then
 				config.SetGlobal(key, data.default)
 			end
@@ -39,7 +40,9 @@ function config.LoadConfig()
 
 		-- Fill missing plugin values
 		for plugin, layout in pairs(pluginLayout) do
+			print(plugin)
 			for key, data in pairs(layout) do
+				print(key, data)
 				if not pluginCache[plugin][key] then
 					config.SetPlugin(plugin, key, data.default)
 				end
