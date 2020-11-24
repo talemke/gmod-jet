@@ -36,5 +36,6 @@ default:wait()
 
 -- Connected?
 if default:status() ~= mysqloo.DATABASE_CONNECTED then
+    print("not connected")
     return false, "Database connection could not be established."
 end
