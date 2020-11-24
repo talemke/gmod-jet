@@ -19,6 +19,12 @@ if not mysqloo then
 end
 
 
+-- Class overrides
+include("classes/sv_database.lua")
+include("classes/sv_prepared_statement.lua")
+include("classes/sv_query.lua")
+
+
 -- Connections
 default = mysqloo.connect(
     config.GetPlugin("Jet/Database", "Hostname"),
