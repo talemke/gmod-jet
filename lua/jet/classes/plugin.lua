@@ -171,6 +171,9 @@ function PLUGIN:Load()
 		end
 	end
 
+	-- Log
+	log.Debug("[Jet] - " .. self:GetIdentifier() .. " @ v" .. self:GetVersion():ToString())
+
 	-- Load Shared
 	do
 		local result, reason = IncludeSafe(pluginPath .. "/shared.lua")

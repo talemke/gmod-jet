@@ -65,7 +65,6 @@ function jet.LoadPlugins()
 		if pl:IsDisabled() then
 			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " @ v" .. pl:GetVersion():ToString() .. " (disabled)")
 		else
-			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " @ v" .. pl:GetVersion():ToString())
 			pl:Load()
 			loaded = loaded + 1
 		end
