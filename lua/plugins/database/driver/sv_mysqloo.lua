@@ -13,6 +13,12 @@ local default = nil
 require("mysqloo")
 
 
+-- Check for success
+if not mysqloo then
+	return false, "MySQLOO doesn't seem to be installed."
+end
+
+
 -- Connections
 default = mysqloo.connect(
     config.GetPlugin("Jet/Database", "Hostname"),
@@ -28,7 +34,7 @@ default:connect()
 default:wait()
 
 
--- Check for success
-if not mysqloo then
-	return false, "MySQLOO doesn't seem to be installed."
+-- Connected?
+if default:status() ~= mysqloo.DATABASE_CONNECTED then
+    return false, "Database connection could not be established."
 end

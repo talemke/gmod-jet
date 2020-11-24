@@ -18,5 +18,11 @@ config.AddPlugin("Jet/Database", "Password", "password", "string", "The password
 -- Initialize
 db = {}
 
+
 -- Load MySQLOO
-include("driver/sv_mysqloo.lua")
+do
+	local status, err = include("driver/sv_mysqloo.lua")
+	if status == false then
+		return false, err
+	end
+end
