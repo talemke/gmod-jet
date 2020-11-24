@@ -50,6 +50,6 @@ end
 function IncludeSafe(filePath)
 	if not filePath then return end
 	if file.Exists(filePath, "LUA") then
-		include(filePath)
+		return include(filePath)
 	end
 end

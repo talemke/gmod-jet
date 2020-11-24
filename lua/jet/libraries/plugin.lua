@@ -65,9 +65,13 @@ function jet.LoadPlugins()
 		if pl:IsDisabled() then
 			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " @ v" .. pl:GetVersion():ToString() .. " (disabled)")
 		else
-			log.Debug("[Jet] - " .. pl:GetIdentifier() .. " @ v" .. pl:GetVersion():ToString())
-			pl:Load()
-			loaded = loaded + 1
+			local result, err = pl:Load()
+			if result == false then
+				log.Error("[Jet] Failed to load " .. pl:GetIdentifier() .. ":")
+				log.Error("[Jet] -> " .. err)
+			else
+				loaded = loaded + 1
+			end
 		end
 	end
 
@@ -77,6 +81,12 @@ function jet.LoadPlugins()
 	else
 		log.Info("[Jet] Loaded " .. loaded .. " out of " .. #pluginsFound .. " available plugins.")
 	end
+
+	-- Run post hook
+	--- Called after all plugins have been loaded.
+	-- @param pluginsFound [number] - how many plugins were available to be loaded
+	-- @param loaded [number] - how many plugins were actually loaded
+	hook.Run("PluginsLoaded", #pluginsFound, loaded)
 end
 
 

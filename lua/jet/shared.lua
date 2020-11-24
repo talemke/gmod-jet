@@ -42,4 +42,6 @@ include("libraries/version.lua")
 
 
 -- Load plugins
-jet.LoadPlugins()
+if jet.continueBooting then
+	jet.LoadPlugins()
+end
