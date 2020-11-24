@@ -19,6 +19,12 @@ config.AddPlugin("Jet/Database", "Password", "password", "string", "The password
 db = {}
 
 
+-- Load classes
+include("classes/sv_database.lua")
+include("classes/sv_query.lua")
+include("classes/sv_prepared_statement.lua")
+
+
 -- Load MySQLOO
 do
 	local status, err = include("driver/sv_mysqloo.lua")
