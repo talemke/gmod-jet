@@ -12,7 +12,9 @@ STMT.__index = FindMetaTable("Query")
 
 
 
--- TODO: Documentation
+--- Specifies the parameter at the given index (starting at 1) using automatic type-detection.
+-- @param index [number] - the index
+-- @param value [nil|number|string|boolean] - the value
 function STMT:Set(index, value)
 	if value == nil then
 		self:SetNull(index)
@@ -29,28 +31,35 @@ end
 
 
 
--- TODO: Documentation
+--- Specifies a #number parameter at the given index (starting at 1).
+-- @param index [number] - the index
+-- @param value [number] - the parameter
 function STMT:SetNumber(index, value)
 	error("No valid database driver loaded.")
 end
 
 
 
--- TODO: Documentation
+--- Specifies a #string parameter at the given index (starting at 1).
+-- @param index [number] - the index
+-- @param value [string] - the parameter
 function STMT:SetString(index, value)
 	error("No valid database driver loaded.")
 end
 
 
 
--- TODO: Documentation
+--- Specifies a #boolean parameter at the given index (starting at 1).
+-- @param index [number] - the index
+-- @param value [boolean] - the parameter
 function STMT:SetBoolean(index, value)
 	error("No valid database driver loaded.")
 end
 
 
 
--- TODO: Documentation
+--- Specifies a parameter to `nil` at the given index (starting at 1).
+-- @param index [number] - the index
 function STMT:SetNull(index)
 	error("No valid database driver loaded.")
 end
