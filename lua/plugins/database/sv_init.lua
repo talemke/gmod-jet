@@ -15,11 +15,8 @@ config.AddPlugin("Jet/Database", "Username", "username", "string", "The username
 config.AddPlugin("Jet/Database", "Password", "password", "string", "The password to use for logging in.")
 
 
--- Require MySQLOO
-require("mysqloo")
+-- Initialize
+db = {}
 
-
--- Check for success
-if not mysqloo then
-	return false, "MySQLOO doesn't seem to be installed."
-end
+-- Load MySQLOO
+include("driver/sv_mysqloo.lua")
