@@ -70,7 +70,6 @@ end
 
 -- TODO: Documentation
 function QUERY:OnSuccess(data)
-	log.Debug("Query " .. tostring(self) .. " finished with success.")
 end
 
 
