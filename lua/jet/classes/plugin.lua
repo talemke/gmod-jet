@@ -373,7 +373,10 @@ function PLUGIN:ResolveDependencies()
 							.. dependency.version:ToFullString() .. " - available: " .. pl:GetVersion():ToFullString()
 		end
 
-		pl:Load()
+		local result, err = pl:Load()
+		if result == false then
+			return false, err
+		end
 	end
 	return true
 end
