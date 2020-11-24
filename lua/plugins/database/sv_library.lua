@@ -17,7 +17,7 @@ db = {}
 -- @param name [string] - the name
 -- @returns connection [Database] - the database connection
 function db.GetConnection(name)
-    return connections[name]
+	return connections[name]
 end
 
 
@@ -26,7 +26,7 @@ end
 -- @param name [string] - the name
 -- @param connection [Database] - the database connection
 function db.SetConnection(name, connection)
-    connections[name] = connection
+	connections[name] = connection
 end
 
 
@@ -38,7 +38,7 @@ end
 -- ```
 -- @returns connection [Database] - the global database connection
 function db.GetGlobal()
-    return db.GetConnection("global")
+	return db.GetConnection("global")
 end
 
 
@@ -50,7 +50,7 @@ end
 -- @param connection [Database] - the global database connection
 -- @internal
 function db.SetGlobal(connection)
-    db.SetConnection("global", connection)
+	db.SetConnection("global", connection)
 end
 
 

@@ -25,10 +25,10 @@ include("classes/sv_query.lua")
 
 -- Connect
 function db.Connect(hostname, port, database, username, password)
-    local con = mysqloo.connect(hostname, username, password, database, port)
-    con:connect()
-    con:wait()
-    return setmetatable({
+	local con = mysqloo.connect(hostname, username, password, database, port)
+	con:connect()
+	con:wait()
+	return setmetatable({
 		_con = con
 	}, FindMetaTable("Database"))
 end

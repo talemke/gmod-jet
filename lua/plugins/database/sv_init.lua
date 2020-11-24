@@ -36,15 +36,15 @@ end
 
 -- Connections
 db.SetGlobal(db.Connect(
-    config.GetPlugin("Jet/Database", "Hostname"),
-    config.GetPlugin("Jet/Database", "Port"),
-    config.GetPlugin("Jet/Database", "Database"),
-    config.GetPlugin("Jet/Database", "Username"),
-    config.GetPlugin("Jet/Database", "Password")
+	config.GetPlugin("Jet/Database", "Hostname"),
+	config.GetPlugin("Jet/Database", "Port"),
+	config.GetPlugin("Jet/Database", "Database"),
+	config.GetPlugin("Jet/Database", "Username"),
+	config.GetPlugin("Jet/Database", "Password")
 ))
 
 
 -- Connected?
 if not db.GetGlobal():IsConnected() then
-    return false, "Database connection could not be established."
+	return false, "Database connection could not be established."
 end
