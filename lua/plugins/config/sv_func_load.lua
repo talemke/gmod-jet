@@ -1,6 +1,6 @@
 
 --[[
-    Config Plugin -> Load Function (Shared)
+    Config Plugin -> Load Function (ServerSide)
     by Tassilo (@TASSIA710)
 --]]
 

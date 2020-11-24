@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> Query Class (Shared)
+	Database Plugin -> Query Class (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the query class.

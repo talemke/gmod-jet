@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> Initialize (Shared)
+	Database Plugin -> Initialize (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the plugin core.

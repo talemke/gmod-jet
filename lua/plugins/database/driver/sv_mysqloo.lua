@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> MySQLOO Driver (Shared)
+	Database Plugin -> MySQLOO Driver (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Handles the MySQLOO driver.

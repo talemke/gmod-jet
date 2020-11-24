@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> Database Class (Shared)
+	Database Plugin -> Database Class (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the database class.

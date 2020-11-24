@@ -1,6 +1,6 @@
 
 --[[
-	Config Plugin -> Initialize (Shared)
+	Config Plugin -> Initialize (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the plugin core.

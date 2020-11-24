@@ -1,6 +1,6 @@
 
 --[[
-    Config Plugin -> Save Function (Shared)
+    Config Plugin -> Save Function (ServerSide)
     by Tassilo (@TASSIA710)
 --]]
 

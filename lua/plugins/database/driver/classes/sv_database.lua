@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> MySQLOO Driver -> Database Class (Shared)
+	Database Plugin -> MySQLOO Driver -> Database Class (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the database class.

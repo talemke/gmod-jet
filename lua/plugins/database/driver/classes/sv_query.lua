@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> MySQLOO Driver -> Query Class (Shared)
+	Database Plugin -> MySQLOO Driver -> Query Class (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the query class.

@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> Prepared Statement Class (Shared)
+	Database Plugin -> Prepared Statement Class (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the prepared statement class.

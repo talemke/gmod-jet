@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> MySQLOO Driver -> Prepared Statement Class (Shared)
+	Database Plugin -> MySQLOO Driver -> Prepared Statement Class (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains the prepared statement class.

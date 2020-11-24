@@ -1,6 +1,6 @@
 
 --[[
-	Database Plugin -> Library (Shared)
+	Database Plugin -> Library (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Contains all the library functions.
