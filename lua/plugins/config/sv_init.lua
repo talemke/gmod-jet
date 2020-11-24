@@ -54,7 +54,7 @@ end
 -- TODO: Documentation
 function config.SaveConfig()
 	file.CreateDir("jet")
-	return save(globalCache, pluginCache)
+	return save(globalCache, pluginCache, globalLayout, pluginLayout)
 end
 
 -- TODO: Documentation
