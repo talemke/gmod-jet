@@ -1,6 +1,6 @@
 
 --[[
-	CLI Plugin -> Help Command (ServerSide)
+	CLI Plugin -> Map Command (ServerSide)
 	by Tassilo (@TASSIA710)
 
 	Command for quickly changing map.
