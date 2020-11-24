@@ -31,17 +31,26 @@ be working.
 
 ## Pre-Installed Plugins
 
-- [TASSIA710/CLI](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/cli)\
+- [Jet/CLI](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/cli)\
   *The Jet command line interface.*
 
-- [TASSIA710/Generic](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/generic)\
+- [Jet/Config](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/config)\
+  *Provides an interface for getting & setting configuration values, globally and plugin-specific.*
+
+- [Jet/Database](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/database)\
+  *Goal of this plugin is to allow for global database connections, instead of each addon using their own.*
+
+- [Jet/Generic](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/generic)\
   *Boilerplate for a bunch of addons. Made to make developing easier.*
 
-- [TASSIA710/Stack](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/stack)\
+- [Jet/Stack](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/stack)\
   *Adds a nice stack with a couple of features.*
 
-- [TASSIA710/StringUtility](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/string_utility)\
+- [Jet/StringUtility](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/string_utility)\
   *Adds a bunch of new features for strings.*
+
+- [Jet/Updater](https://github.com/TASSIA710/Jet/tree/main/lua/plugins/updater)\
+  *Allows for semi-automatic updating.*
 
 
 
@@ -62,7 +71,7 @@ be working.
 - `jet restart`\
   *Soft-Restarts the server.*
 
-- `jet test`\
+- `jet test <plugin/all/*>`\
   *Run test suites.*
 
 - `jet version`\
