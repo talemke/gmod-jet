@@ -6,8 +6,6 @@
 	Handles the MySQLOO driver.
 --]]
 
-local default = nil
-
 
 -- Require MySQLOO
 require("mysqloo")
@@ -25,22 +23,12 @@ include("classes/sv_prepared_statement.lua")
 include("classes/sv_query.lua")
 
 
--- Connections
-default = mysqloo.connect(
-    config.GetPlugin("Jet/Database", "Hostname"),
-    config.GetPlugin("Jet/Database", "Username"),
-    config.GetPlugin("Jet/Database", "Password"),
-    config.GetPlugin("Jet/Database", "Database"),
-    config.GetPlugin("Jet/Database", "Port")
-)
-
-
 -- Connect
-default:connect()
-default:wait()
-
-
--- Connected?
-if default:status() ~= mysqloo.DATABASE_CONNECTED then
-    return false, "Database connection could not be established."
+function db.Connect(hostname, port, database, username, password)
+    local con = mysqloo.connect(hostname, username, password, database, port)
+    con:connect()
+    con:wait()
+    return setmetatable({
+		_con = con
+	}, FindMetaTable("Database"))
 end

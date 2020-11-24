@@ -33,5 +33,12 @@ end
 
 
 
+-- TODO: Documentation
+function DATABASE:IsConnected()
+	return false
+end
+
+
+
 -- Register
 debug.getregistry()["Database"] = DATABASE

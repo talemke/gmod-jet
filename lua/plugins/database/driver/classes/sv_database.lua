@@ -24,3 +24,7 @@ end
 function DATABASE:Escape(str)
 	return self._con:escape(str)
 end
+
+function DATABASE:IsConnected()
+	return self._con:status() == mysqloo.DATABASE_CONNECTED
+end
