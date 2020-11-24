@@ -30,8 +30,8 @@ default = mysqloo.connect(
 
 
 -- Connect
--- default:connect()
--- default:wait()
+default:connect()
+default:wait()
 
 
 -- Connected?
