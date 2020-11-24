@@ -13,13 +13,6 @@ QUERY.__index = QUERY
 
 
 -- TODO: Documentation
-function QUERY:Start()
-	error("No valid database driver loaded.")
-end
-
-
-
--- TODO: Documentation
 function QUERY:Cancel()
 	error("No valid database driver loaded.")
 end
@@ -71,6 +64,18 @@ end
 -- TODO: Documentation
 function QUERY:GetError()
 	error("No valid database driver loaded.")
+end
+
+
+
+-- TODO: Documentation
+function QUERY:OnSuccess(data)
+end
+
+
+
+-- TODO: Documentation
+function QUERY:OnError(err, sql)
 end
 
 
