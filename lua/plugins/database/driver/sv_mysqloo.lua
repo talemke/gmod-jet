@@ -23,6 +23,11 @@ default = mysqloo.connect(
 )
 
 
+-- Connect
+default:connect()
+default:wait()
+
+
 -- Check for success
 if not mysqloo then
 	return false, "MySQLOO doesn't seem to be installed."
