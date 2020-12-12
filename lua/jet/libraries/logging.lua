@@ -23,7 +23,7 @@ local function varargsToString(level, ...)
 			if not IsValid(arg) then
 				arg = "NULL"
 			elseif arg:IsPlayer() then
-				arg = arg:SteamNick() .. " (" .. arg:UserID() .. ")"
+				arg = arg:Nick() .. " (" .. arg:UserID() .. ")"
 			else
 				arg = arg:GetClass() .. "-" .. arg:EntIndex()
 			end
