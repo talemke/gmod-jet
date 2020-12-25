@@ -2,9 +2,8 @@ name: Linter
 on: push
 
 jobs:
-  lua_lint:
+  lint:
     runs-on: ubuntu-latest
-    name: GLua Linter
     steps:
       - name: Checkout
         id: checkout
