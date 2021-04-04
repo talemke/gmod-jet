@@ -3,6 +3,14 @@ A plugin & dependency system for Garry's Mod addons.
 
 
 
+---
+
+**Currently undergoing maintenance.**
+
+---
+
+
+
 ## Documentation
 
 All functions/hooks/classes are well documented. You can find the
