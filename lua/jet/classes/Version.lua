@@ -3,6 +3,8 @@
 	Licensed under the MIT License.
 --]]
 
+
+
 --- Defines a semantic version.
 ---
 --- @class Version
@@ -97,9 +99,8 @@ end
 --- @return boolean is equal
 ---
 CLASS.__eq = function(a, b)
-	-- Assert that major, minor and patch version match.
-	-- The extension is not of any relevance for arithmetic comparisons.
-	return a.Major == b.Major and a.Minor == b.Minor and a.Patch == b.Patch
+	-- Assert that major, minor, patch version and extension match.
+	return a.Major == b.Major and a.Minor == b.Minor and a.Patch == b.Patch and a.Extension == b.Extension
 end
 
 

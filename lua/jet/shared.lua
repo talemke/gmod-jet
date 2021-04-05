@@ -5,15 +5,45 @@
 
 
 
--- Download files
-AddCSLuaFile("./classes/jet.lua")
-AddCSLuaFile("./classes/version.lua")
+-- Download classes
+AddCSLuaFile("./classes/Jet.lua")
+AddCSLuaFile("./classes/Plugin.lua")
+AddCSLuaFile("./classes/PluginInformation.lua")
+AddCSLuaFile("./classes/PluginManager.lua")
+AddCSLuaFile("./classes/Version.lua")
+AddCSLuaFile("./classes/VersionMatch.lua")
+
+-- Download libraries
+AddCSLuaFile("./libraries/global.lua")
+
+-- Download objects
+AddCSLuaFile("./objects/VersionMatchAny.lua")
+AddCSLuaFile("./objects/VersionMatchExactly.lua")
+AddCSLuaFile("./objects/VersionMatchGreaterOrEqual.lua")
+AddCSLuaFile("./objects/VersionMatchGreaterThan.lua")
+AddCSLuaFile("./objects/VersionMatchLessOrEqual.lua")
+AddCSLuaFile("./objects/VersionMatchLessThan.lua")
 
 
 
--- Include files
-include("./classes/jet.lua")
-include("./classes/version.lua")
+-- Include classes
+include("./classes/Jet.lua")
+include("./classes/Plugin.lua")
+include("./classes/PluginInformation.lua")
+include("./classes/PluginManager.lua")
+include("./classes/Version.lua")
+include("./classes/VersionMatch.lua")
+
+-- Include libraries
+include("./libraries/global.lua")
+
+-- Include objects
+include("./objects/VersionMatchAny.lua")
+include("./objects/VersionMatchExactly.lua")
+include("./objects/VersionMatchGreaterOrEqual.lua")
+include("./objects/VersionMatchGreaterThan.lua")
+include("./objects/VersionMatchLessOrEqual.lua")
+include("./objects/VersionMatchLessThan.lua")
 
 
 
