@@ -7,7 +7,7 @@
 --- 	relative to the garrysmod/lua folder. If no parameter is specified,
 --- 	it sends the current file.
 ---
-AddCSLuaFile = function(file) end
+_G.AddCSLuaFile = function(file) end
 
 
 
@@ -29,4 +29,4 @@ AddCSLuaFile = function(file) end
 ---
 --- @return any Anything that the executed Lua script returns.
 ---
-include = function(fileName) end
+_G.include = function(fileName) end
