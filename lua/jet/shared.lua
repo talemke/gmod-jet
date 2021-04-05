@@ -1,47 +1,25 @@
-
 --[[
-	Jet -> Initialize (Shared)
-	by Tassilo (@TASSIA710)
-
-	This is the initialization script.
+	Jet - (c) 2021 Tassilo <https://tassia.net>
+	Licensed under the MIT License.
 --]]
 
 
--- Base variable
-jet = {}
-jet.bootTime = RealTime()
-jet.continueBooting = true
+
+-- Download files
+AddCSLuaFile("./classes/jet.lua")
+AddCSLuaFile("./classes/version.lua")
 
 
--- Config
-if file.Exists("jet/config.lua", "LUA") then
-	AddCSLuaFile("config.lua")
-	jet.config = include("config.lua")
-else
-	AddCSLuaFile("config.example.lua")
-	jet.config = include("config.example.lua")
-end
+
+-- Include files
+include("./classes/jet.lua")
+include("./classes/version.lua")
 
 
--- Classes
-AddCSLuaFile("classes/plugin.lua")
-include("classes/plugin.lua")
-AddCSLuaFile("classes/version.lua")
-include("classes/version.lua")
 
+-- Create Jet instance, populate it and push to global.
+--- @type Jet
+_G.Jet = setmetatable({}, debug.getregistry()["Jet"])
 
--- Libraries
-AddCSLuaFile("libraries/logging.lua")
-include("libraries/logging.lua")
-AddCSLuaFile("libraries/plugin.lua")
-include("libraries/plugin.lua")
-AddCSLuaFile("libraries/utility.lua")
-include("libraries/utility.lua")
-AddCSLuaFile("libraries/version.lua")
-include("libraries/version.lua")
-
-
--- Load plugins
-if jet.continueBooting then
-	jet.LoadPlugins()
-end
+-- Populate Jet instance with version.
+Jet.VERSION = Jet:CreateVersion(1, 0, 0, "P1")
