@@ -3,7 +3,7 @@
 ---
 --- @type table
 ---
-GAMEMODE = nil
+_G.GAMEMODE = nil
 
 
 
@@ -11,7 +11,7 @@ GAMEMODE = nil
 ---
 --- @type table
 ---
-GM = nil
+_G.GM = nil
 
 
 
@@ -19,7 +19,7 @@ GM = nil
 ---
 --- @type table
 ---
-ENT = nil
+_G.ENT = nil
 
 
 
@@ -27,7 +27,7 @@ ENT = nil
 ---
 --- @type table
 ---
-SWEP = nil
+_G.SWEP = nil
 
 
 
@@ -35,7 +35,7 @@ SWEP = nil
 ---
 --- @type table
 ---
-EFFECT = nil
+_G.EFFECT = nil
 
 
 
@@ -43,7 +43,7 @@ EFFECT = nil
 ---
 --- @type table
 ---
-MODULES = nil
+_G.MODULES = nil
 
 
 
@@ -51,7 +51,7 @@ MODULES = nil
 ---
 --- @type boolean
 ---
-CLIENT = nil
+_G.CLIENT = nil
 
 
 
@@ -59,7 +59,7 @@ CLIENT = nil
 ---
 --- @type boolean|nil
 ---
-CLIENT_DLL = nil
+_G.CLIENT_DLL = nil
 
 
 
@@ -67,7 +67,7 @@ CLIENT_DLL = nil
 ---
 --- @type boolean
 ---
-SERVER = nil
+_G.SERVER = nil
 
 
 
@@ -75,7 +75,7 @@ SERVER = nil
 ---
 --- @type boolean|nil
 ---
-GAME_DLL = nil
+_G.GAME_DLL = nil
 
 
 
@@ -83,7 +83,7 @@ GAME_DLL = nil
 ---
 --- @type boolean|nil
 ---
-MENU_DLL = nil
+_G.MENU_DLL = nil
 
 
 
@@ -91,7 +91,7 @@ MENU_DLL = nil
 ---
 --- @type string|nil
 ---
-GAMEMODE_NAME = nil
+_G.GAMEMODE_NAME = nil
 
 
 
@@ -99,7 +99,7 @@ GAMEMODE_NAME = nil
 ---
 --- @type userdata
 ---
-NULL = nil
+_G.NULL = nil
 
 
 
@@ -107,7 +107,7 @@ NULL = nil
 ---
 --- @type number
 ---
-VERSION = nil
+_G.VERSION = nil
 
 
 
@@ -115,7 +115,7 @@ VERSION = nil
 ---
 --- @type string
 ---
-VERSIONSTR = nil
+_G.VERSIONSTR = nil
 
 
 
@@ -123,4 +123,4 @@ VERSIONSTR = nil
 ---
 --- @type string
 ---
-BRANCH = nil
+_G.BRANCH = nil
