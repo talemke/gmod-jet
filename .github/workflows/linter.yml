@@ -1,17 +1,19 @@
+# This is an example for a workflow file.
+# Place this file in .github/workflows/glua_linter.yml
 name: Linter
-on: push
+on: [push, pull_request]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  lua_lint:
+    runs-on: ubuntu-latest # The action only works on Ubuntu.
+    name: Linter # Name this whatever you want.
     steps:
-      - name: Checkout
+      - name: Checkout # This step is required to clone the repository.
         id: checkout
         uses: actions/checkout@v2
       - name: Linting
         id: action-glua-lint
-        uses: TASSIA710/action-glua-lint@v1.1.2
+        # You can change v1.1.3 to a newer version or 'master.' Changing it to 'master' may cause unexpected behavior.
+        uses: TASSIA710/action-glua-lint@master
         with:
-          lint_unusedParameters: false
-          lint_unusedLoopVars: false
-          failOnWarning: true
+          directory: / # This is the directory to scan. If '/' is selected, it will scan the entire repository.
