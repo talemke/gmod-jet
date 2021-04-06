@@ -53,5 +53,12 @@ include("./objects/VersionMatchLessThan.lua")
 --- @type Jet
 _G.Jet = setmetatable({}, debug.getregistry()["Jet"])
 
--- Populate Jet instance with version.
+-- Populate Jet instance
 Jet.VERSION = Jet:CreateVersion(1, 0, 0, "P1")
+Jet._Objects = {}
+Jet._Plugins = setmetatable({}, debug.getregistry()["Jet:PluginManager"])
+
+
+
+-- Locate plugins
+Jet:Plugins():LocatePlugins()
