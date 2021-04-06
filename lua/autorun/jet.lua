@@ -4,10 +4,10 @@
 --]]
 
 if SERVER then
-	AddCSLuaFile("/jet/client.lua")
-	include("/jet/server.lua")
+	AddCSLuaFile("jet/client.lua")
+	include("jet/server.lua")
 end
 
 if CLIENT then
-	include("/jet/client.lua")
+	include("jet/client.lua")
 end
