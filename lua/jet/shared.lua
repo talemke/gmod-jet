@@ -64,3 +64,8 @@ include("./objects/VersionMatchLessThan.lua")
 
 -- Locate plugins
 Jet:Plugins():LocatePlugins()
+
+
+
+-- Load plugins
+Jet:Plugins():LoadPlugins()
