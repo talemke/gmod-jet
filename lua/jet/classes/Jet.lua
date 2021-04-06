@@ -70,7 +70,7 @@ function CLASS:ParseVersion(str)
 
 	-- Major.Minor.Patch-Extension format
 	print("debug1")
-	temp = letNN(string.match(str, "((%d+).(%d+).(%d+)-([%a%d_-]+))"), function(it)
+	temp = let({ string.match(str, "((%d+).(%d+).(%d+)-([%a%d_-]+))") }, function(it)
 		print("debug2")
 		PrintTable(it)
 		if it[1] ~= str then return nil end
