@@ -367,6 +367,7 @@ end
 ---
 function CLASS:LoadPluginShared(info)
 	letNN(info.EntrypointShared, function(it)
+		print(info.EntrypointShared)
 		include("plugins/" .. info.FolderName .. "/" .. it)
 	end)
 end
