@@ -251,11 +251,13 @@ function CLASS:LoadPlugin(info)
 			plugin:Debug("- Loading shared...")
 			self:LoadPluginShared(info)
 
-		elseif boot == "server" and SERVER == true then
+		elseif boot == "server" then
+			if SERVER ~= true then goto CONTINUE end
 			plugin:Debug("- Loading server-side...")
 			self:LoadPluginServer(info)
 
-		elseif boot == "client" and CLIENT == true then
+		elseif boot == "client" then
+			if CLIENT ~= true then goto CONTINUE end
 			plugin:Debug("- Loading client-side...")
 			self:LoadPluginClient(info)
 
@@ -274,6 +276,8 @@ function CLASS:LoadPlugin(info)
 		else
 			error("Unknown boot step: '" .. boot .. "'")
 		end
+
+		::CONTINUE::
 	end
 	plugin:Info("Enabled " .. info.Name .. " v" .. info.Version .. " - took " .. (SysTime() - start) .. "s")
 
