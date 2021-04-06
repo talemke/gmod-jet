@@ -139,8 +139,8 @@ function CLASS:ValidatePluginInformation(raw)
 		Authors = raw["Authors"] or meta.Authors,
 
 		EntrypointServer = raw["EntrypointServer"] or meta.EntrypointServer,
-		EntrypointShared = raw["EntrypointShared"] or meta.EntrypointServer,
-		EntrypointClient = raw["EntrypointClient"] or meta.EntrypointServer,
+		EntrypointShared = raw["EntrypointShared"] or meta.EntrypointShared,
+		EntrypointClient = raw["EntrypointClient"] or meta.EntrypointClient,
 
 		AutoDownloadSharedFiles = raw["AutoDownloadSharedFiles"] == true,
 		AutoDownloadClientFiles = raw["AutoDownloadClientFiles"] == true,
@@ -367,7 +367,6 @@ end
 ---
 function CLASS:LoadPluginShared(info)
 	letNN(info.EntrypointShared, function(it)
-		print(info.EntrypointShared)
 		include("plugins/" .. info.FolderName .. "/" .. it)
 	end)
 end
