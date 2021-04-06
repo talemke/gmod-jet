@@ -337,10 +337,8 @@ end
 
 
 
---- @param info PluginInformation the plugin information
----
-function CLASS:LoadPluginClasses(info)
-	file.FindRecursive("plugins/" .. info.FolderName .. "/classes/", "*.lua", "LUA", function(dir, file)
+function CLASS:FileHandlingConsumer()
+	return function(dir, file)
 		if self:IsClientFile(file) then
 			if CLIENT == true then
 				include(dir .. "/" .. file)
@@ -356,7 +354,18 @@ function CLASS:LoadPluginClasses(info)
 			AddCSLuaFile(dir .. "/" .. file)
 			include(dir .. "/" .. file)
 		end
-	end)
+	end
+end
+
+
+
+
+
+--- @param info PluginInformation the plugin information
+---
+function CLASS:LoadPluginClasses(info)
+	local pathName = "plugins/" .. info.FolderName .. "/classes/"
+	file.FindRecursive(pathName, "*.lua", "LUA", self:FileHandlingConsumer())
 end
 
 
@@ -389,7 +398,8 @@ end
 --- @param info PluginInformation the plugin information
 ---
 function CLASS:LoadPluginLibraries(info)
-	-- TODO
+	local pathName = "plugins/" .. info.FolderName .. "/libraries/"
+	file.FindRecursive(pathName, "*.lua", "LUA", self:FileHandlingConsumer())
 end
 
 
