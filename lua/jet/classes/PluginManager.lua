@@ -173,8 +173,10 @@ end
 ---
 function CLASS:LoadPlugins()
 	Jet:Info("Loading plugins...")
+	print("")
 	for _, info in pairs(self._Located) do
 		self:LoadPlugin(info)
+		print("")
 	end
 	Jet:Info("Loaded " .. table.Count(self._Loaded) .. " plugins.")
 end
