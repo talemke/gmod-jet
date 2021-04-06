@@ -17,6 +17,11 @@
 --- @return A|B the proper value
 ---
 _G.either = function(expression, thenValue, elseValue)
+	if expression then
+		return thenValue
+	else
+		return elseValue
+	end
 end
 
 
