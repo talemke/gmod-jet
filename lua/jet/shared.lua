@@ -3,6 +3,8 @@
 	Licensed under the MIT License.
 --]]
 
+local start = SysTime()
+
 
 
 -- Download classes
@@ -69,3 +71,8 @@ Jet:Plugins():LocatePlugins()
 
 -- Load plugins
 Jet:Plugins():LoadPlugins()
+
+
+
+-- Done!
+Jet:Info("Jet initialized in " .. Jet:FormatTimeLength(SysTime() - start))
