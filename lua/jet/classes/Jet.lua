@@ -144,23 +144,23 @@ end
 
 
 function CLASS:Info(...)
-	print(" [INFO]", ...)
+	print("Jet :  INFO>", ...)
 end
 
 function CLASS:Debug(...)
-	print("[DEBUG]", ...)
+	print("Jet : DEBUG>", ...)
 end
 
 function CLASS:Warning(...)
-	print(" [WARN]", ...)
+	print("Jet :  WARN>", ...)
 end
 
 function CLASS:Error(...)
-	print("[ERROR]", ...)
+	print("Jet : ERROR>", ...)
 end
 
 function CLASS:Severe(...)
-	print("[SEVERE]", ...)
+	print("Jet : SEVERE>", ...)
 end
 
 
