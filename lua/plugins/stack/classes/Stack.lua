@@ -31,7 +31,7 @@ end
 ---
 --- @return any|nil the top element
 ---
-function STACK:Pop()
+function CLASS:Pop()
 	local element = self._Data[#self._Data]
 	table.remove(self._Data)
 	return element
@@ -42,7 +42,7 @@ end
 --- Peeks at the top of the stack.
 ---
 --- @return any|nil the top element
-function STACK:Peek()
+function CLASS:Peek()
 	return self._Data[#self._Data]
 end
 
@@ -52,7 +52,7 @@ end
 ---
 --- @param element any the element
 ---
-function STACK:Push(element)
+function CLASS:Push(element)
 	table.insert(self._Data, element)
 end
 
@@ -60,7 +60,7 @@ end
 
 --- Clears the stack.
 ---
-function STACK:Clear()
+function CLASS:Clear()
 	self._Data = {}
 end
 
@@ -70,7 +70,7 @@ end
 ---
 --- @param element any the element to remove
 ---
-function STACK:Remove(element)
+function CLASS:Remove(element)
 	table.RemoveByValue(self._Data, element)
 end
 
@@ -80,7 +80,7 @@ end
 ---
 --- @param predicate fun(element:any):boolean the predicate
 ---
-function STACK:RemoveIf(predicate)
+function CLASS:RemoveIf(predicate)
 	for index, element in pairs(self._Data) do
 		if predicate(element) then
 			table.remove(self._Data, index)
