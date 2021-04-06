@@ -202,7 +202,21 @@ function CLASS:LoadPlugin(info)
 	-- Enable dependencies
 	plugin:Debug("Resolving dependencies...")
 	for _, dependency in ipairs(info.Dependencies) do
-		-- TODO
+		local depPlugin = self:FindPluginInfo(dependency:GetDependencyIdentifier())
+		if depPlugin ~= nil then
+			if dependency.Match.Matches(dependency.Version, depPlugin.Version) then
+				plugin:Debug("- " .. dependency:GetDependencyIdentifier())
+				self:LoadPlugin(depPlugin)
+			else
+				plugin:Severe("Dependency " .. dependency:GetDependencyIdentifier() .. " does not satisfy required version.")
+				plugin:Error("- Required: " .. tostring(dependency.Version))
+				plugin:Error("- Available: " .. tostring(depPlugin.Version))
+				return
+			end
+		else
+			plugin:Severe("Dependency " .. dependency:GetDependencyIdentifier() .. " is not available.")
+			return
+		end
 	end
 
 	-- Enable soft-dependencies
