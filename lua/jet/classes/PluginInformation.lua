@@ -212,7 +212,7 @@ CLASS.Repository = nil
 --- @return string the identifier
 ---
 function CLASS:Identifier()
-	return self.GroupID + ":" + self.PluginID
+	return self.GroupID .. ":" .. self.PluginID
 end
 
 
