@@ -14,6 +14,7 @@ AddCSLuaFile("./classes/Version.lua")
 AddCSLuaFile("./classes/VersionMatch.lua")
 
 -- Download libraries
+AddCSLuaFile("./libraries/file.lua")
 AddCSLuaFile("./libraries/global.lua")
 
 -- Download objects
@@ -35,6 +36,7 @@ include("./classes/Version.lua")
 include("./classes/VersionMatch.lua")
 
 -- Include libraries
+include("./libraries/file.lua")
 include("./libraries/global.lua")
 
 -- Include objects
