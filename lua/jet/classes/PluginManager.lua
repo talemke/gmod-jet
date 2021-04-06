@@ -327,7 +327,7 @@ end
 function CLASS:LoadPluginClient(info)
 	assert(CLIENT == true, "PluginManager::LoadPluginClient cannot be invoked in non-client realm.")
 	letNN(info.EntrypointClient, function(it)
-		if file.Exists("plugins/" .. info.FolderName .. "/" .. it) then
+		if file.Exists("plugins/" .. info.FolderName .. "/" .. it, "LUA") then
 			include("plugins/" .. info.FolderName .. "/" .. it)
 		end
 	end)
@@ -360,7 +360,7 @@ end
 function CLASS:LoadPluginServer(info)
 	assert(SERVER == true, "PluginManager::LoadPluginServer cannot be invoked in non-server realm.")
 	letNN(info.EntrypointServer, function(it)
-		if file.Exists("plugins/" .. info.FolderName .. "/" .. it) then
+		if file.Exists("plugins/" .. info.FolderName .. "/" .. it, "LUA") then
 			include("plugins/" .. info.FolderName .. "/" .. it)
 		end
 	end)
@@ -371,7 +371,7 @@ end
 ---
 function CLASS:LoadPluginShared(info)
 	letNN(info.EntrypointShared, function(it)
-		if file.Exists("plugins/" .. info.FolderName .. "/" .. it) then
+		if file.Exists("plugins/" .. info.FolderName .. "/" .. it, "LUA") then
 			include("plugins/" .. info.FolderName .. "/" .. it)
 		end
 	end)
