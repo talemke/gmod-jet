@@ -185,5 +185,18 @@ end
 
 
 
+--- Formats the given amount of seconds to a readable time length.
+---
+--- @param seconds number the amount of seconds
+--- @return string a readable string
+---
+function CLASS:FormatTimeLength(seconds)
+	return math.Round(seconds * 1000, 2) .. "ms"
+end
+
+
+
+
+
 -- Register class.
 debug.getregistry()["Jet"] = CLASS
