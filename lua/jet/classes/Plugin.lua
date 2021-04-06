@@ -26,23 +26,23 @@ end
 
 
 function CLASS:Info(...)
-	Jet:Info(self:Identifier(), "|", ...)
+	Jet:Log(self:Identifier(), " INFO", ...)
 end
 
 function CLASS:Debug(...)
-	Jet:Debug(self:Identifier(), "|", ...)
+	Jet:Log(self:Identifier(), "DEBUG", ...)
 end
 
 function CLASS:Warning(...)
-	Jet:Warning(self:Identifier(), "|", ...)
+	Jet:Log(self:Identifier(), " WARN", ...)
 end
 
 function CLASS:Error(...)
-	Jet:Error(self:Identifier(), "|", ...)
+	Jet:Log(self:Identifier(), "ERROR", ...)
 end
 
 function CLASS:Severe(...)
-	Jet:Severe(self:Identifier(), "|", ...)
+	Jet:Log(self:Identifier(), "SEVERE", ...)
 end
 
 
