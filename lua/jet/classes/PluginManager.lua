@@ -115,6 +115,7 @@ function CLASS:ValidatePluginInformation(raw)
 	-- Assert Version
 	assert(isstring(raw["Version"]) and raw["Version"] ~= "", "Version must be provided.")
 	local version = Jet:ParseVersion(raw["Version"])
+	assert(version ~= nil, "Version '" .. raw["Version"] .. "' is in illegal format.")
 
 	-- Assert Name
 	assert(isstring(raw["Name"]) and raw["Name"] ~= "", "Name must be provided.")
