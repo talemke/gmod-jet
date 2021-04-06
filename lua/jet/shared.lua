@@ -39,14 +39,6 @@ include("./classes/VersionMatch.lua")
 include("./libraries/file.lua")
 include("./libraries/global.lua")
 
--- Include objects
-include("./objects/VersionMatchAny.lua")
-include("./objects/VersionMatchExactly.lua")
-include("./objects/VersionMatchGreaterOrEqual.lua")
-include("./objects/VersionMatchGreaterThan.lua")
-include("./objects/VersionMatchLessOrEqual.lua")
-include("./objects/VersionMatchLessThan.lua")
-
 
 
 -- Create Jet instance, populate it and push to global.
@@ -57,6 +49,16 @@ _G.Jet = setmetatable({}, debug.getregistry()["Jet"])
 Jet.VERSION = Jet:CreateVersion(1, 0, 0, "P1")
 Jet._Objects = {}
 Jet._Plugins = setmetatable({}, debug.getregistry()["Jet:PluginManager"])
+
+
+
+-- Include objects
+include("./objects/VersionMatchAny.lua")
+include("./objects/VersionMatchExactly.lua")
+include("./objects/VersionMatchGreaterOrEqual.lua")
+include("./objects/VersionMatchGreaterThan.lua")
+include("./objects/VersionMatchLessOrEqual.lua")
+include("./objects/VersionMatchLessThan.lua")
 
 
 
