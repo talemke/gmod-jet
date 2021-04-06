@@ -69,35 +69,28 @@ function CLASS:ParseVersion(str)
 	local temp
 
 	-- Major.Minor.Patch-Extension format
-	print("debug1")
 	temp = let({ string.match(str, "((%d+).(%d+).(%d+)-([%a%d_-]+))") }, function(it)
-		print("debug2")
-		PrintTable(it)
 		if it[1] ~= str then return nil end
-		print("debug3")
 		return Jet:CreateVersion(tonumber(it[2]), tonumber(it[3]), tonumber(it[4]), it[5])
 	end)
-	print("debug4")
-	print(temp)
 	if temp ~= nil then return temp end
-	print("debug5")
 
 	-- Major.Minor.Patch format
-	temp = letNN(string.match(str, "((%d+).(%d+).(%d+))"), function(it)
+	temp = let({ string.match(str, "((%d+).(%d+).(%d+))") }, function(it)
 		if it[1] ~= str then return nil end
 		return Jet:CreateVersion(tonumber(it[2]), tonumber(it[3]), tonumber(it[4]), nil)
 	end)
 	if temp ~= nil then return temp end
 
 	-- Major.Minor-Extension format
-	temp = letNN(string.match(str, "((%d+).(%d+)-([%a%d_-]+))"), function(it)
+	temp = let({ string.match(str, "((%d+).(%d+)-([%a%d_-]+))") }, function(it)
 		if it[1] ~= str then return nil end
 		return Jet:CreateVersion(tonumber(it[2]), tonumber(it[3]), 0, it[4])
 	end)
 	if temp ~= nil then return temp end
 
 	-- Major.Minor format
-	temp = letNN(string.match(str, "((%d+).(%d+))"), function(it)
+	temp = let({ string.match(str, "((%d+).(%d+))") }, function(it)
 		if it[1] ~= str then return nil end
 		return Jet:CreateVersion(tonumber(it[2]), tonumber(it[3]), 0, nil)
 	end)
