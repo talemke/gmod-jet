@@ -144,7 +144,7 @@ end
 
 
 function CLASS:Info(...)
-	print("[FINE]", ...)
+	print(" [INFO]", ...)
 end
 
 function CLASS:Debug(...)
@@ -152,7 +152,7 @@ function CLASS:Debug(...)
 end
 
 function CLASS:Warning(...)
-	print("[WARN]", ...)
+	print(" [WARN]", ...)
 end
 
 function CLASS:Error(...)
