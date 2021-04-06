@@ -108,7 +108,7 @@ end
 ---
 --- @type table<string, any>
 ---
-CLASS._Objects = {}
+CLASS._Objects = nil
 
 --- Registers the given object with the given key,
 --- overriding previously registered objects if needed.
@@ -161,6 +161,24 @@ end
 
 function CLASS:Severe(...)
 	print("[SEVERE]", ...)
+end
+
+
+
+
+
+--- The [PluginManager].
+---
+--- @type PluginManager
+---
+CLASS._Plugins = nil
+
+--- Returns the [PluginManager].
+---
+--- @return PluginManager the plugin manager
+---
+function CLASS:Plugins()
+	return self._Plugins
 end
 
 
