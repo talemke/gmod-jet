@@ -282,7 +282,7 @@ function CLASS:LoadPlugin(info)
 
 		::CONTINUE::
 	end
-	plugin:Info("Enabled " .. info.Name .. " v" .. info.Version .. " - took " .. (SysTime() - start) .. "s")
+	plugin:Info("Enabled " .. info.Name .. " v" .. tostring(info.Version) .. " - took " .. (SysTime() - start) .. "s")
 
 end
 
