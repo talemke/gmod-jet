@@ -148,23 +148,23 @@ function CLASS:Log(source, level, ...)
 end
 
 function CLASS:Info(...)
-	self:Log("Jet", " INFO")
+	self:Log("Jet", " INFO", ...)
 end
 
 function CLASS:Debug(...)
-	self:Log("Jet", "DEBUG")
+	self:Log("Jet", "DEBUG", ...)
 end
 
 function CLASS:Warning(...)
-	self:Log("Jet", " WARN")
+	self:Log("Jet", " WARN", ...)
 end
 
 function CLASS:Error(...)
-	self:Log("Jet", "ERROR")
+	self:Log("Jet", "ERROR", ...)
 end
 
 function CLASS:Severe(...)
-	self:Log("Jet", "SEVERE")
+	self:Log("Jet", "SEVERE", ...)
 end
 
 
