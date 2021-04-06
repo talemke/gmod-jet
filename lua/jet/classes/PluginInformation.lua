@@ -14,6 +14,15 @@ CLASS.__index = CLASS
 
 
 
+--- The name of the folder containing the plugin.
+--- This is set automatically, you shouldn't set this yourself.
+---
+--- @type string
+---
+CLASS.FolderName = nil
+
+
+
 --- The group ID of this plugin. This should be a typical Maven/Gradle group ID, so for example: `net.tassia`.
 --- Allow characters are: `a-z`, `-`, `_`, `.`. The max. length is 63 characters.
 ---
