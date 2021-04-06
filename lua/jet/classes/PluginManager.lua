@@ -290,11 +290,33 @@ end
 
 
 
+--- @param fileName string
+--- @return boolean
+function CLASS:IsServerFile(fileName)
+	return string.StartWith(fileName, "sv_") or string.StartWith(fileName, "server")
+end
+
+--- @param fileName string
+--- @return boolean
+function CLASS:IsClientFile(fileName)
+	return string.StartWith(fileName, "cl_") or string.StartWith(fileName, "client")
+end
+
+--- @param fileName string
+--- @return boolean
+function CLASS:IsSharedFile(fileName)
+	return not self:IsServerFile(fileName) and not self:IsClientFile(fileName)
+end
+
+
+
+
+
 --- @param info PluginInformation the plugin information
 ---
 function CLASS:DownloadSharedFiles(info)
 	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
-		if string.StartWith(file, "sh_") or string.StartWith(file, "shared") then
+		if self:IsSharedFile(file) then
 			AddCSLuaFile(dir .. file)
 		end
 	end)
@@ -305,7 +327,7 @@ end
 ---
 function CLASS:DownloadClientFiles(info)
 	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
-		if string.StartWith(file, "cl_") or string.StartWith(file, "client") then
+		if self:IsClientFile(file) then
 			AddCSLuaFile(dir .. file)
 		end
 	end)
@@ -318,7 +340,23 @@ end
 --- @param info PluginInformation the plugin information
 ---
 function CLASS:LoadPluginClasses(info)
-	-- TODO
+	file.FindRecursive("plugins/" .. info.FolderName .. "/classes/", "*.lua", "LUA", function(dir, file)
+		if self:IsClientFile(file) then
+			if CLIENT == true then
+				include(dir .. "/" .. file)
+			end
+			if SERVER == true then
+				AddCSLuaFile(dir .. "/" .. file)
+			end
+		elseif self:IsServerFile(file) then
+			if SERVER == true then
+				include(dir .. "/" .. file)
+			end
+		else
+			AddCSLuaFile(dir .. "/" .. file)
+			include(dir .. "/" .. file)
+		end
+	end)
 end
 
 
