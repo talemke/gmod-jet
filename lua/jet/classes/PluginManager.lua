@@ -74,7 +74,7 @@ end
 ---
 function CLASS:LocatePlugins()
 	Jet:Info("Locating plugins...")
-	local files, dirs = file.Find("/plugins/*", "LUA")
+	local files, dirs = file.Find("plugins/*", "LUA")
 	for _, dir in ipairs(dirs) do
 		Jet:Debug("- " .. dir)
 		assert(table.HasValue(files, dir .. ".lua"), "Plugin '" .. dir .. "' found, but no '" .. dir .. ".lua' exists.")
@@ -89,7 +89,7 @@ end
 --- @param folder string the folder name
 ---
 function CLASS:LocatePlugin(folder)
-	local infoRaw = include("/plugins/" .. folder .. ".lua")
+	local infoRaw = include("plugins/" .. folder .. ".lua")
 	local info = self:ValidatePluginInformation(infoRaw)
 	info.FolderName = folder
 	self._Located[folder] = info
@@ -275,7 +275,7 @@ end
 --- @param info PluginInformation the plugin information
 ---
 function CLASS:DownloadSharedFiles(info)
-	file.FindRecursive("/plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
+	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
 		if string.StartWith(file, "sh_") or string.StartWith(file, "shared") then
 			AddCSLuaFile(dir .. file)
 		end
@@ -286,7 +286,7 @@ end
 --- @param info PluginInformation the plugin information
 ---
 function CLASS:DownloadClientFiles(info)
-	file.FindRecursive("/plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
+	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
 		if string.StartWith(file, "cl_") or string.StartWith(file, "client") then
 			AddCSLuaFile(dir .. file)
 		end
@@ -309,7 +309,7 @@ end
 function CLASS:LoadPluginClient(info)
 	assert(CLIENT == true, "PluginManager::LoadPluginClient cannot be invoked in non-client realm.")
 	letNN(info.EntrypointClient, function(it)
-		include("/plugins/" .. info.FolderName .. "/" .. it)
+		include("plugins/" .. info.FolderName .. "/" .. it)
 	end)
 end
 
@@ -340,7 +340,7 @@ end
 function CLASS:LoadPluginServer(info)
 	assert(SERVER == true, "PluginManager::LoadPluginServer cannot be invoked in non-server realm.")
 	letNN(info.EntrypointServer, function(it)
-		include("/plugins/" .. info.FolderName .. "/" .. it)
+		include("plugins/" .. info.FolderName .. "/" .. it)
 	end)
 end
 
@@ -349,7 +349,7 @@ end
 ---
 function CLASS:LoadPluginShared(info)
 	letNN(info.EntrypointShared, function(it)
-		include("/plugins/" .. info.FolderName .. "/" .. it)
+		include("plugins/" .. info.FolderName .. "/" .. it)
 	end)
 end
 
