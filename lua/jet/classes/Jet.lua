@@ -72,6 +72,7 @@ function CLASS:ParseVersion(str)
 	print("debug1")
 	temp = letNN(string.match(str, "((%d+).(%d+).(%d+)-([%a%d_-]+))"), function(it)
 		print("debug2")
+		print(it[1])
 		if it[1] ~= str then return nil end
 		print("debug3")
 		return Jet:CreateVersion(tonumber(it[2]), tonumber(it[3]), tonumber(it[4]), it[5])
