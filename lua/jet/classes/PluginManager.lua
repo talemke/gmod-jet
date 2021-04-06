@@ -169,6 +169,17 @@ end
 
 
 
+--- Loads all available plugins.
+---
+function CLASS:LoadPlugins()
+	Jet:Info("Loading plugins...")
+	for _, info in pairs(self._Located) do
+		self:LoadPlugin(info)
+	end
+	Jet:Info("Loaded " .. table.Count(self._Loaded) .. " plugins.")
+end
+
+
 --- Loads the given plugin.
 ---
 --- @param info PluginInformation the plugin to enable
