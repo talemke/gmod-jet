@@ -14,13 +14,11 @@
 --- @param consumer fun(dir:string,file:string) the consumer
 ---
 _G.file.FindRecursive = function(pathName, pattern, path, consumer)
-	local files, _ = file.Find(pathName .. pattern, path)
+	local files, dirs = file.Find(pathName .. pattern, path)
 	for _, file in ipairs(files) do
 		consumer(pathName, file)
 	end
-
-	local _, dirs = file.Find(pathName .. "*", path)
 	for _, dir in ipairs(dirs) do
-		file.FindRecursive(pathName .. dir .. "/", pathName, path, consumer)
+		file.FindRecursive(pathName .. dir .. "/", pattern, path, consumer)
 	end
 end
