@@ -8,38 +8,38 @@ local start = SysTime()
 
 
 -- Download classes
-AddCSLuaFile("./classes/Jet.lua")
-AddCSLuaFile("./classes/Plugin.lua")
-AddCSLuaFile("./classes/PluginInformation.lua")
-AddCSLuaFile("./classes/PluginManager.lua")
-AddCSLuaFile("./classes/Version.lua")
-AddCSLuaFile("./classes/VersionMatch.lua")
+AddCSLuaFile("classes/Jet.lua")
+AddCSLuaFile("classes/Plugin.lua")
+AddCSLuaFile("classes/PluginInformation.lua")
+AddCSLuaFile("classes/PluginManager.lua")
+AddCSLuaFile("classes/Version.lua")
+AddCSLuaFile("classes/VersionMatch.lua")
 
 -- Download libraries
-AddCSLuaFile("./libraries/file.lua")
-AddCSLuaFile("./libraries/global.lua")
+AddCSLuaFile("libraries/file.lua")
+AddCSLuaFile("libraries/global.lua")
 
 -- Download objects
-AddCSLuaFile("./objects/VersionMatchAny.lua")
-AddCSLuaFile("./objects/VersionMatchExactly.lua")
-AddCSLuaFile("./objects/VersionMatchGreaterOrEqual.lua")
-AddCSLuaFile("./objects/VersionMatchGreaterThan.lua")
-AddCSLuaFile("./objects/VersionMatchLessOrEqual.lua")
-AddCSLuaFile("./objects/VersionMatchLessThan.lua")
+AddCSLuaFile("objects/VersionMatchAny.lua")
+AddCSLuaFile("objects/VersionMatchExactly.lua")
+AddCSLuaFile("objects/VersionMatchGreaterOrEqual.lua")
+AddCSLuaFile("objects/VersionMatchGreaterThan.lua")
+AddCSLuaFile("objects/VersionMatchLessOrEqual.lua")
+AddCSLuaFile("objects/VersionMatchLessThan.lua")
 
 
 
 -- Include classes
-include("./classes/Jet.lua")
-include("./classes/Plugin.lua")
-include("./classes/PluginInformation.lua")
-include("./classes/PluginManager.lua")
-include("./classes/Version.lua")
-include("./classes/VersionMatch.lua")
+include("classes/Jet.lua")
+include("classes/Plugin.lua")
+include("classes/PluginInformation.lua")
+include("classes/PluginManager.lua")
+include("classes/Version.lua")
+include("classes/VersionMatch.lua")
 
 -- Include libraries
-include("./libraries/file.lua")
-include("./libraries/global.lua")
+include("libraries/file.lua")
+include("libraries/global.lua")
 
 
 
@@ -55,12 +55,12 @@ Jet._Plugins = setmetatable({}, debug.getregistry()["Jet:PluginManager"])
 
 
 -- Include objects
-include("./objects/VersionMatchAny.lua")
-include("./objects/VersionMatchExactly.lua")
-include("./objects/VersionMatchGreaterOrEqual.lua")
-include("./objects/VersionMatchGreaterThan.lua")
-include("./objects/VersionMatchLessOrEqual.lua")
-include("./objects/VersionMatchLessThan.lua")
+include("objects/VersionMatchAny.lua")
+include("objects/VersionMatchExactly.lua")
+include("objects/VersionMatchGreaterOrEqual.lua")
+include("objects/VersionMatchGreaterThan.lua")
+include("objects/VersionMatchLessOrEqual.lua")
+include("objects/VersionMatchLessThan.lua")
 
 
 
