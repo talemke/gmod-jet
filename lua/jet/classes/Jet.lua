@@ -189,8 +189,16 @@ end
 
 
 
+function CLASS:FormatLogArguments(...)
+	local str = ""
+	for _, arg in ipairs({...}) do
+		str = str + tostring(arg) + "\t"
+	end
+	return str + "\n"
+end
+
 function CLASS:Log(color, source, level, ...)
-	MsgC(color, source .. " : " .. level .. ">", ..., "\n")
+	MsgC(color, self:FormatLogArguments(source .. " : " .. level .. ">", ..., "\n"))
 end
 
 function CLASS:LogInfo(source, ...)
