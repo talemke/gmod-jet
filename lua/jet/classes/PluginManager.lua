@@ -366,20 +366,12 @@ end
 
 function CLASS:FileHandlingConsumer()
 	return function(dir, file)
-		if self:IsClientFile(file) then
-			if CLIENT == true then
-				include(dir .. "/" .. file)
-			end
-			if SERVER == true then
-				AddCSLuaFile(dir .. "/" .. file)
-			end
-		elseif self:IsServerFile(file) then
-			if SERVER == true then
-				include(dir .. "/" .. file)
-			end
+		if self:IsClientFile(file) and CLIENT == true then
+			include(dir .. file)
+		elseif self:IsServerFile(file) and SERVER == true then
+			include(dir .. file)
 		else
-			AddCSLuaFile(dir .. "/" .. file)
-			include(dir .. "/" .. file)
+			include(dir .. file)
 		end
 	end
 end
