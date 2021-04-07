@@ -198,7 +198,7 @@ function CLASS:FormatLogArguments(...)
 end
 
 function CLASS:Log(color, source, level, ...)
-	MsgC(color, self:FormatLogArguments(source .. " : " .. level .. ">", ..., "\n"))
+	MsgC(color, self:FormatLogArguments(source .. " : " .. level .. ">", ...))
 end
 
 function CLASS:LogInfo(source, ...)
