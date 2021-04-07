@@ -153,14 +153,14 @@ function CLASS:ValidatePluginInformation(raw)
 		EntrypointShared = raw["EntrypointShared"] or meta.EntrypointShared,
 		EntrypointClient = raw["EntrypointClient"] or meta.EntrypointClient,
 
-		AutoDownloadSharedFiles = raw["AutoDownloadSharedFiles"] == true,
-		AutoDownloadClientFiles = raw["AutoDownloadClientFiles"] == true,
+		AutoDownloadSharedFiles = raw["AutoDownloadSharedFiles"] ~= false,
+		AutoDownloadClientFiles = raw["AutoDownloadClientFiles"] ~= false,
 
-		AutoLoadEffects = raw["AutoLoadEffects"] == true,
-		AutoLoadEntities = raw["AutoLoadEntities"] == true,
-		AutoLoadWeapons = raw["AutoLoadWeapons"] == true,
-		AutoLoadLibraries = raw["AutoLoadLibraries"] == true,
-		AutoLoadClasses = raw["AutoLoadClasses"] == true,
+		AutoLoadEffects = raw["AutoLoadEffects"] ~= false,
+		AutoLoadEntities = raw["AutoLoadEntities"] ~= false,
+		AutoLoadWeapons = raw["AutoLoadWeapons"] ~= false,
+		AutoLoadLibraries = raw["AutoLoadLibraries"] ~= false,
+		AutoLoadClasses = raw["AutoLoadClasses"] ~= false,
 
 		LoadOrder = raw["LoadOrder"] or meta.LoadOrder,
 
