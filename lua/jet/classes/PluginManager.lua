@@ -343,6 +343,7 @@ end
 ---
 function CLASS:DownloadSharedFiles(info)
 	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
+		print(dir .. file)
 		if self:IsSharedFile(file) then
 			AddCSLuaFile(dir .. file)
 		end
