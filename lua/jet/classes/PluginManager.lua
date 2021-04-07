@@ -120,11 +120,21 @@ function CLASS:ValidatePluginInformation(raw)
 	-- Assert Name
 	assert(isstring(raw["Name"]) and raw["Name"] ~= "", "Name must be provided.")
 
-	-- TODO: Assert Dependencies
+	-- Assert Dependencies
 	local dependencies = {}
+	for _, str in ipairs(raw["Dependencies"] or {}) do
+		local dependency = Jet:ParseDependency(str)
+		assert(dependency ~= nil, "Dependency '" .. str .. "' is in illegal format.")
+		table.insert(dependencies, dependency)
+	end
 
-	-- TODO: Assert Soft-Dependencies
+	-- Assert Soft-Dependencies
 	local softDependencies = {}
+	for _, str in ipairs(raw["SoftDependencies"] or {}) do
+		local dependency = Jet:ParseDependency(str)
+		assert(dependency ~= nil, "Soft-Dependency '" .. str .. "' is in illegal format.")
+		table.insert(softDependencies, dependency)
+	end
 
 	--- @type PluginInformation
 	local meta = debug.getregistry()["Jet:PluginInformation"]
