@@ -177,7 +177,6 @@ function CLASS:LoadPlugins()
 	print("")
 	for _, info in pairs(self._Located) do
 		self:LoadPlugin(info)
-		print("")
 	end
 	Jet:Info("Loaded " .. table.Count(self._Loaded) .. " plugins.")
 end
@@ -297,6 +296,9 @@ function CLASS:LoadPlugin(info)
 		::CONTINUE::
 	end
 	plugin:Info("Enabled " .. info.Name .. " v" .. tostring(info.Version) .. " - took " .. Jet:FormatTimeLength(SysTime() - start))
+
+	-- Print a nice empty line
+	print("")
 
 end
 
