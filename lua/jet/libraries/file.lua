@@ -15,10 +15,12 @@
 ---
 _G.file.FindRecursive = function(pathName, pattern, path, consumer)
 	print(pathName, pattern, path)
-	local files, dirs = file.Find(pathName .. pattern, path)
+	local files, _ = file.Find(pathName .. pattern, path)
 	for _, file in ipairs(files) do
 		consumer(pathName, file)
 	end
+
+	local _, dirs = file.Find(pathName .. "*", path)
 	for _, dir in ipairs(dirs) do
 		file.FindRecursive(pathName .. dir .. "/", pattern, path, consumer)
 	end
