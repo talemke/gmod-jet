@@ -60,6 +60,27 @@ end
 
 
 
+--- Creates a new [PluginDependency].
+---
+--- @param groupID string the groupID of the dependency
+--- @param pluginID string the pluginID of the dependency
+--- @param version Version the required version
+--- @param match VersionMatch the version matcher
+--- @return PluginDependency the created dependency
+---
+function CLASS:CreateDependency(groupID, pluginID, version, match)
+	return setmetatable({
+		GroupID = groupID,
+		PluginID = pluginID,
+		Version = version,
+		Match = match
+	}, debug.getregistry()["Jet:PluginDependency"])
+end
+
+
+
+
+
 --- Parses a [Version] from a given string.
 ---
 --- @param str string the string to parse
@@ -97,6 +118,31 @@ function CLASS:ParseVersion(str)
 	if temp ~= nil then return temp end
 
 	-- Illegal format
+	return nil
+end
+
+
+
+
+
+--- Parses a plugin dependency string.
+---
+--- @param str string the string to parse
+--- @return PluginDependency|nil the parsed dependency, or `nil` on failure
+---
+function CLASS:ParseDependency(str)
+	local temp
+
+	-- GroupID:PluginID@Version format
+	-- TODO
+
+	-- GroupID:PluginID format
+	temp = let({ string.match(str, "(([%l_-.]+):([%l_-]+))") }, function(it)
+		if it[1] ~= str then return nil end
+		return Jet:CreateDependency(it[2], it[3], Jet:CreateVersion(0, 0, 0), Jet:GetObject("VersionMatchAny"))
+	end)
+	if temp ~= nil then return temp end
+
 	return nil
 end
 
