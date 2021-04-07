@@ -194,7 +194,7 @@ function CLASS:FormatLogArguments(...)
 	for _, arg in ipairs({...}) do
 		str = str .. tostring(arg) .. "\t"
 	end
-	return str + "\n"
+	return str .. "\n"
 end
 
 function CLASS:Log(color, source, level, ...)
