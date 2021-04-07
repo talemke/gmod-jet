@@ -192,7 +192,7 @@ end
 function CLASS:FormatLogArguments(...)
 	local str = ""
 	for _, arg in ipairs({...}) do
-		str = str + tostring(arg) + "\t"
+		str = str .. tostring(arg) .. "\t"
 	end
 	return str + "\n"
 end
