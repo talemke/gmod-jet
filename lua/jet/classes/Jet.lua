@@ -190,7 +190,7 @@ end
 
 
 function CLASS:Log(color, source, level, ...)
-	MsgC(color, source .. " : " .. level .. ">", ...)
+	MsgC(color, source .. " : " .. level .. ">", ..., "\n")
 end
 
 function CLASS:LogInfo(source, ...)
