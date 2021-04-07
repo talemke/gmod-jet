@@ -253,13 +253,13 @@ function CLASS:LoadPlugin(info)
 	plugin:Info("Loading plugin...")
 
 	-- Download shared files
-	if info.AutoDownloadSharedFiles then
+	if info.AutoDownloadSharedFiles and SERVER == true then
 		plugin:Debug("- Downloading shared files...")
 		self:DownloadSharedFiles(info)
 	end
 
 	-- Download client files
-	if info.AutoDownloadClientFiles then
+	if info.AutoDownloadClientFiles and SERVER == true then
 		plugin:Debug("- Downloading client files...")
 		self:DownloadClientFiles(info)
 	end
