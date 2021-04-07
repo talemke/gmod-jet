@@ -93,6 +93,7 @@ function CLASS:LocatePlugin(folder)
 	local info = self:ValidatePluginInformation(infoRaw)
 	info.FolderName = folder
 	self._Located[folder] = info
+	AddCSLuaFile("plugins/" .. folder .. ".lua")
 end
 
 
