@@ -189,28 +189,50 @@ end
 
 
 
-function CLASS:Log(source, level, ...)
-	print(source .. " : " .. level .. ">", ...)
+function CLASS:Log(color, source, level, ...)
+	MsgC(color, source .. " : " .. level .. ">", ...)
 end
 
+function CLASS:LogInfo(source, ...)
+	self:Log(Color(255, 255, 255), source, " INFO", ...)
+end
+
+function CLASS:LogDebug(source, ...)
+	self:Log(Color(151, 151, 151), source, "DEBUG", ...)
+end
+
+function CLASS:LogWarning(source, ...)
+	self:Log(Color(255, 191, 0), source, " WARN", ...)
+end
+
+function CLASS:LogError(source, ...)
+	self:Log(Color(255, 0, 0), source, "ERROR", ...)
+end
+
+function CLASS:LogSevere(source, ...)
+	self:Log(Color(255, 0, 0), source, "SEVERE", ...)
+end
+
+
+
 function CLASS:Info(...)
-	self:Log("Jet", " INFO", ...)
+	self:LogInfo("Jet", ...)
 end
 
 function CLASS:Debug(...)
-	self:Log("Jet", "DEBUG", ...)
+	self:LogDebug("Jet", ...)
 end
 
-function CLASS:Warning(...)
-	self:Log("Jet", " WARN", ...)
+function CLASS:Warn(...)
+	self:LogWarning("Jet", ...)
 end
 
 function CLASS:Error(...)
-	self:Log("Jet", "ERROR", ...)
+	self:LogError("Jet", ...)
 end
 
 function CLASS:Severe(...)
-	self:Log("Jet", "SEVERE", ...)
+	self:LogSevere("Jet", ...)
 end
 
 
