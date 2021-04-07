@@ -14,7 +14,6 @@
 --- @param consumer fun(dir:string,file:string) the consumer
 ---
 _G.file.FindRecursive = function(pathName, pattern, path, consumer)
-	print(pathName, pattern, path)
 	local files, _ = file.Find(pathName .. pattern, path)
 	for _, file in ipairs(files) do
 		consumer(pathName, file)
