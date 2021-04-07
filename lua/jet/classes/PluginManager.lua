@@ -345,6 +345,7 @@ function CLASS:DownloadSharedFiles(info)
 	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
 		print(dir .. file)
 		if self:IsSharedFile(file) then
+			print("SHARED", dir .. file)
 			AddCSLuaFile(dir .. file)
 		end
 	end)
@@ -356,6 +357,7 @@ end
 function CLASS:DownloadClientFiles(info)
 	file.FindRecursive("plugins/" .. info.FolderName .. "/", "*.lua", "LUA", function(dir, file)
 		if self:IsClientFile(file) then
+			print("CLIENT", dir .. file)
 			AddCSLuaFile(dir .. file)
 		end
 	end)
