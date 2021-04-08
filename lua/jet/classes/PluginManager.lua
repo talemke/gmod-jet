@@ -264,6 +264,9 @@ function CLASS:LoadPlugin(info)
 		self:DownloadClientFiles(info)
 	end
 
+	-- Push plugin to global
+	_G.PLUGIN = plugin
+
 	-- Boot process
 	for _, boot in ipairs(info.LoadOrder) do
 		if boot == "classes" then
@@ -307,6 +310,9 @@ function CLASS:LoadPlugin(info)
 		::CONTINUE::
 	end
 	plugin:Info("Enabled " .. info.Name .. " v" .. tostring(info.Version) .. " - took " .. Jet:FormatTimeLength(SysTime() - start))
+
+	-- Pop from global
+	_G.PLUGIN = nil
 
 	-- Print a nice empty line
 	print("")
