@@ -70,6 +70,11 @@ include("objects/VersionMatchLessThan.lua")
 
 
 
+-- Create folder
+file.CreateDir("jet")
+
+
+
 -- Locate plugins
 Jet:Plugins():LocatePlugins()
 
