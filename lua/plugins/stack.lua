@@ -5,7 +5,7 @@
 
 return {
 
-	GroupID = "net.tassia",
+	GroupID = "jet",
 	PluginID = "stack",
 	Version = "1.0.0",
 	Name = "Stack",
