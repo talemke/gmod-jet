@@ -54,6 +54,12 @@ Jet._Plugins = setmetatable({}, debug.getregistry()["Jet:PluginManager"])
 
 
 
+--- The currently loading plugin.
+--- @type Plugin|nil
+_G.PLUGIN = nil
+
+
+
 -- Include objects
 include("objects/VersionMatchAny.lua")
 include("objects/VersionMatchExactly.lua")
