@@ -26,7 +26,7 @@ end
 
 
 --- @param sql string
---- @return any
+--- @return PreparedStatement
 function CLASS:Prepare(sql)
 	return self._Adapter:Prepare(sql)
 end
