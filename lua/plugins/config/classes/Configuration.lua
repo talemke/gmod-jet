@@ -21,7 +21,7 @@ CLASS._Store = {}
 
 --- @param path string
 --- @param description string
---- @param default string|number|boolean
+--- @param default string|number|boolean|Configuration
 --- @return ConfigValue
 function CLASS:Add(path, description, default)
 	local config = setmetatable({
