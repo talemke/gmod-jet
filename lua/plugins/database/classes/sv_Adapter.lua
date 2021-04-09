@@ -14,10 +14,9 @@ CLASS.__index = CLASS
 
 
 --- @param sql string
---- @return any
+--- @return PreparedStatement
 function CLASS:Prepare(sql)
-	-- TODO
-	return nil
+	error("Function DatabaseAdapter::Prepare has not been implemented.")
 end
 
 
