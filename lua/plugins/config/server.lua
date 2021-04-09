@@ -11,4 +11,10 @@ include("plugins/config/meta/sv_plugin.lua")
 
 -- Create config
 Jet._Config = setmetatable({}, debug.getregistry()["Jet:Configuration"])
-Jet._Config:Load("jet/config.json")
+Jet:Config():Load("jet/config.json")
+
+
+-- Save config on PostInit
+hook.Add("JetPostInitialize", "Jet:Config:SaveConfig", function()
+	Jet:Config():Save("jet/config.json")
+end)
