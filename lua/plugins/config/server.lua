@@ -5,8 +5,8 @@
 
 
 -- Load meta tables
-include("plugins/config/meta/sh_jet.lua")
-include("plugins/config/meta/sh_plugin.lua")
+include("plugins/config/meta/sv_jet.lua")
+include("plugins/config/meta/sv_plugin.lua")
 
 
 -- Create config
