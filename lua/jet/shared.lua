@@ -7,6 +7,11 @@ local start = SysTime()
 
 
 
+-- Call JetPreInitialize hook
+hook.Run("JetPreInitialize")
+
+
+
 -- Download classes
 AddCSLuaFile("classes/Jet.lua")
 AddCSLuaFile("classes/Plugin.lua")
@@ -82,6 +87,11 @@ Jet:Plugins():LocatePlugins()
 
 -- Load plugins
 Jet:Plugins():LoadPlugins()
+
+
+
+-- Call JetPostInitialize hook
+hook.Run("JetPostInitialize")
 
 
 
