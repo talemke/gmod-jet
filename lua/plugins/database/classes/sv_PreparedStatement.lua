@@ -91,9 +91,16 @@ end
 
 --- @param callback fun(err:string|nil,data:table[]|nil)
 --- @return PreparedStatement
-function CLASS:Submit(callback)
-	self._Adapter:StatementSubmit(self, callback)
+function CLASS:SubmitAsync(callback)
+	self._Adapter:StatementSubmitAsync(self, callback)
 	return self
+end
+
+
+--- @return string|nil error
+--- @return table[]|nil data
+function CLASS:SubmitBlocking()
+	return self._Adapter:StatementSubmitBlocking(self)
 end
 
 
