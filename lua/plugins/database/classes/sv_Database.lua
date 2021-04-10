@@ -25,7 +25,11 @@ function CLASS:Adapter()
 end
 
 
-
+--- @param str string
+--- @return string
+function CLASS:Escape(str)
+	return self._Adapter:Escape(str)
+end
 
 
 --- @param sql string
