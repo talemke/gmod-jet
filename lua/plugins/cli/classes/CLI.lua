@@ -100,5 +100,41 @@ end
 
 
 
+--- Attaches/Loads this CLI.
+---
+function CLASS:Attach()
+	concommand.Add("jet", function(ply, _, args, _)
+		if #args == 0 then
+			print("No command supplied. - Type 'help' for a list of available commands.")
+			return
+		end
+
+		local flags = {}
+		local command = realArgs[1]
+		table.remove(args, 1)
+
+		local cmd = Jet:CLI()._Register[string.lower(command)]
+		if cmd ~= nil then
+			cmd.Callback(ply, args, flags)
+		else
+			print("Unknown command: '" .. command .. "' - Type 'help' for a list of available commands.")
+		end
+	end)
+end
+
+
+
+
+
+--- Detaches/Unloads this CLI.
+---
+function CLASS:Detach()
+	concommand.Remove("jet")
+end
+
+
+
+
+
 -- Register class.
 debug.getregistry()["Jet:CLI"] = CLASS
