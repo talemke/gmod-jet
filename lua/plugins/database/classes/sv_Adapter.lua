@@ -26,6 +26,11 @@ function CLASS:IsConnected()
 end
 
 
+function CLASS:Connect()
+	error("Function DatabaseAdapter::Connect has not been implemented.")
+end
+
+
 function CLASS:Disconnect()
 	error("Function DatabaseAdapter::Disconnect has not been implemented.")
 end
