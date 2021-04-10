@@ -3,8 +3,6 @@
 	Licensed under the MIT License.
 --]]
 
-print(SERVER)
-print(CLIENT)
 
 
 -- We use this for the PlayerNetworkReady hook.
