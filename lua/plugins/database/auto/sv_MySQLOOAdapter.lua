@@ -15,6 +15,13 @@ CLASS._Internal = nil
 
 
 
+--- @param str string
+--- @return string
+function CLASS:Escape(str)
+	return self._Internal:escape(str)
+end
+
+
 --- @param sql string
 --- @return PreparedStatement
 function CLASS:Prepare(sql)
@@ -24,6 +31,9 @@ function CLASS:Prepare(sql)
 		_Internal = self._Internal:prepare(sql)
 	}, debug.getregistry()["Jet:PreparedStatement"])
 end
+
+
+
 
 
 --- @return boolean
