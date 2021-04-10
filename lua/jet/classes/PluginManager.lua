@@ -303,6 +303,10 @@ function CLASS:LoadPlugin(info)
 			plugin:Debug("- Loading effects...")
 			self:LoadPluginEffects(info)
 
+		elseif boot == "auto" then
+			plugin:Debug("- Loading auto...")
+			self:LoadPluginAuto(info)
+
 		else
 			error("Unknown boot step: '" .. boot .. "'")
 		end
@@ -384,6 +388,14 @@ end
 
 
 
+
+
+--- @param info PluginInformation the plugin information
+---
+function CLASS:LoadPluginAuto(info)
+	local pathName = "plugins/" .. info.FolderName .. "/auto/"
+	file.FindRecursive(pathName, "*.lua", "LUA", self:FileHandlingConsumer())
+end
 
 
 --- @param info PluginInformation the plugin information
