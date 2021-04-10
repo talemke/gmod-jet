@@ -385,10 +385,13 @@ end
 function CLASS:FileHandlingConsumer()
 	return function(dir, file)
 		if self:IsClientFile(file) and CLIENT == true then
+			print("client")
 			include(dir .. file)
 		elseif self:IsServerFile(file) and SERVER == true then
+			print("server")
 			include(dir .. file)
 		else
+			print("shared")
 			include(dir .. file)
 		end
 	end
