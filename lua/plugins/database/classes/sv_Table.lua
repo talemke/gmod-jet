@@ -57,5 +57,28 @@ end
 
 
 
+--- @return PreparedStatement
+function CLASS:CountAllQuery()
+	return self._Database:Prepare("SELECT COUNT(*) FROM " .. self._SQLNameEscaped .. ";")
+end
+
+--- @param callback fun(err:string|nil,count:number|nil)
+function CLASS:CountAll(callback)
+	return self:DropTableQuery():SubmitAsync(function(err, data)
+		callback(err, letNN(data, function(it) return it["COUNT(*)"] end))
+	end)
+end
+
+--- @return string|nil error
+--- @return number|nil count
+function CLASS:CountAllBlocking()
+	local err, data = self:CountAllQuery():SubmitBlocking()
+	return err, letNN(data, function(it) return it["COUNT(*)"] end)
+end
+
+
+
+
+
 -- Register class.
 debug.getregistry()["Jet:DatabaseTable"] = CLASS
