@@ -70,8 +70,16 @@ end
 
 --- @param stmt PreparedStatement
 --- @param callback fun(err:string|nil,data:table[]|nil)
-function CLASS:StatementSubmit(stmt, callback)
+function CLASS:StatementSubmitAsync(stmt, callback)
 	error("Function DatabaseAdapter::StatementSubmit has not been implemented.")
+end
+
+
+--- @param stmt PreparedStatement
+--- @return string|nil error
+--- @return table[]|nil data
+function CLASS:StatementSubmitBlocking(stmt)
+	error("Function DatabaseAdapter::StatementSubmitBlocking has not been implemented.")
 end
 
 
