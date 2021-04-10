@@ -10,6 +10,14 @@ local CLASS = {}
 CLASS.__index = CLASS
 
 
+--- @type string
+CLASS._SQL = nil
+
+
+--- @type DatabaseAdapter
+CLASS._Adapter = nil
+
+
 
 
 
@@ -38,7 +46,7 @@ end
 --- @param value number
 --- @return PreparedStatement
 function CLASS:SetNumber(index, value)
-	-- TODO
+	self._Adapter:StatementSetNumber(self, index, value)
 	return self
 end
 
@@ -50,7 +58,7 @@ end
 --- @param value string
 --- @return PreparedStatement
 function CLASS:SetString(index, value)
-	-- TODO
+	self._Adapter:StatementSetString(self, index, value)
 	return self
 end
 
@@ -62,7 +70,7 @@ end
 --- @param value boolean
 --- @return PreparedStatement
 function CLASS:SetBoolean(index, value)
-	-- TODO
+	self._Adapter:StatementSetBoolean(self, index, value)
 	return self
 end
 
@@ -73,7 +81,7 @@ end
 --- @param index number
 --- @return PreparedStatement
 function CLASS:SetNull(index)
-	-- TODO
+	self._Adapter:StatementSetNull(self, index)
 	return self
 end
 
@@ -84,7 +92,7 @@ end
 --- @param callback fun(err:string|nil,data:table[]|nil)
 --- @return PreparedStatement
 function CLASS:Submit(callback)
-	-- TODO
+	self._Adapter:StatementSubmit(self, callback)
 	return self
 end
 
