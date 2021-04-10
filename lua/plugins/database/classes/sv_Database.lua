@@ -70,6 +70,10 @@ function CLASS:IsConnected()
 end
 
 
+function CLASS:Connect()
+	self._Adapter:Connect()
+end
+
 
 function CLASS:Disconnect()
 	self._Adapter:Disconnect()
