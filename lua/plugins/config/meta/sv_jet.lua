@@ -19,3 +19,13 @@ META._Config = nil
 function META:Config()
 	return self._Config
 end
+
+
+
+--- Creates a new empty configuration.
+---
+--- @return Configuration
+---
+function META:NewEmptyConfig()
+	return setmetatable({}, debug.getregistry()["Jet:Configuration"])
+end

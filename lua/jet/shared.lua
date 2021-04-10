@@ -7,6 +7,11 @@ local start = SysTime()
 
 
 
+-- Call JetPreInitialize hook
+hook.Run("JetPreInitialize")
+
+
+
 -- Download classes
 AddCSLuaFile("classes/Jet.lua")
 AddCSLuaFile("classes/Plugin.lua")
@@ -49,6 +54,8 @@ _G.Jet = setmetatable({}, debug.getregistry()["Jet"])
 
 -- Populate Jet instance
 Jet.VERSION = Jet:CreateVersion(1, 0, 0, "P1")
+Jet.AUTHORS = "Tassilo"
+Jet.LICENSE = "MIT"
 Jet._Objects = {}
 Jet._Plugins = setmetatable({}, debug.getregistry()["Jet:PluginManager"])
 
@@ -82,6 +89,11 @@ Jet:Plugins():LocatePlugins()
 
 -- Load plugins
 Jet:Plugins():LoadPlugins()
+
+
+
+-- Call JetPostInitialize hook
+hook.Run("JetPostInitialize")
 
 
 

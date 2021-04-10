@@ -35,7 +35,16 @@ CLASS._ActualValue = nil
 --- @return any the value
 ---
 function CLASS:GetValue()
-	return self._ActualValue or self._DefaultValue
+	if self._ActualValue ~= nil then
+		return self._ActualValue
+	end
+
+	if istable(self._DefaultValue) then
+		self._ActualValue = table.Copy(self._DefaultValue)
+	else
+		self._ActualValue = self._DefaultValue
+	end
+	return self._ActualValue
 end
 
 
