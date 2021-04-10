@@ -54,6 +54,8 @@ _G.Jet = setmetatable({}, debug.getregistry()["Jet"])
 
 -- Populate Jet instance
 Jet.VERSION = Jet:CreateVersion(1, 0, 0, "P1")
+Jet.AUTHORS = "Tassilo"
+Jet.LICENSE = "MIT"
 Jet._Objects = {}
 Jet._Plugins = setmetatable({}, debug.getregistry()["Jet:PluginManager"])
 
