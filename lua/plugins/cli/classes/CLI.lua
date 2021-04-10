@@ -175,7 +175,7 @@ function CLASS:Attach()
 		end
 
 		local flags = {}
-		local command = realArgs[1]
+		local command = args[1]
 		table.remove(args, 1)
 
 		local cmd = Jet:CLI()._Register[string.lower(command)]
