@@ -81,5 +81,16 @@ end
 
 
 
+--- @param callback fun(err:string|nil,data:table[]|nil)
+--- @return PreparedStatement
+function CLASS:Submit(callback)
+	-- TODO
+	return self
+end
+
+
+
+
+
 -- Register class.
 debug.getregistry()["Jet:PreparedStatement"] = CLASS
