@@ -13,3 +13,11 @@ Jet._CLI = setmetatable({
 	_Commands = {},
 	_Register = {}
 }, debug.getregistry()["Jet:CLI"])
+
+
+-- Register commands
+include("plugins/cli/commands/sh_version.lua")
+
+
+-- Attach CLI
+Jet:CLI():Attach()
