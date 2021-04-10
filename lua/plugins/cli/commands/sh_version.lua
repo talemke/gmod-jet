@@ -8,6 +8,6 @@ Jet:CLI():AddSharedCommand("version", function(ply, args, flags)
 	assert(#args == 0)
 
 	Jet:CLI():Info("Running Jet v" .. tostring(Jet.VERSION) .. " - by " .. Jet.AUTHORS)
-	Jet:CLI():Info("Licensed under the " .. Jet.LICENSE .. " license.")
+	Jet:CLI():Info("Licensed under the " .. Jet.LICENSE .. " License.")
 
 end)
