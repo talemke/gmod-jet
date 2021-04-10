@@ -46,5 +46,19 @@ end
 
 
 
+function CLASS:IsConnected()
+	return self._Adapter:IsConnected()
+end
+
+
+
+function CLASS:Disconnect()
+	self._Adapter:Disconnect()
+end
+
+
+
+
+
 -- Register class.
 debug.getregistry()["Jet:Database"] = CLASS
