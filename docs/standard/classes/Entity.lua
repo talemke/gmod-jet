@@ -1,0 +1,3 @@
+
+--- @class Entity
+local ENTITY = {}

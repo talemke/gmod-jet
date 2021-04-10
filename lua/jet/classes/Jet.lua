@@ -219,6 +219,7 @@ end
 
 function CLASS:LogSevere(source, ...)
 	self:Log(Color(255, 0, 0), source, "SEVERE", ...)
+	error(self:FormatLogArguments(...))
 end
 
 
