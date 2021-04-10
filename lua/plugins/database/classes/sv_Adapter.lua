@@ -13,11 +13,21 @@ CLASS.__index = CLASS
 
 
 
+--- @param str string
+--- @return string
+function CLASS:Escape(str)
+	error("Function DatabaseAdapter::Escape has not been implemented.")
+end
+
+
 --- @param sql string
 --- @return PreparedStatement
 function CLASS:Prepare(sql)
 	error("Function DatabaseAdapter::Prepare has not been implemented.")
 end
+
+
+
 
 
 --- @return boolean
