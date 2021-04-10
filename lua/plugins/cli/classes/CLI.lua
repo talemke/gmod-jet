@@ -73,7 +73,7 @@ end
 ---
 function CLASS:AddServerCommand(name, callback, ...)
 	assert(SERVER == true, "Function CLI::AddServerCommand can only be called in server realm.")
-	local command = self:CreateCommand(name, "", {...}, "SERVER", callback)
+	local command = self:CreateCommand(name, "No description provided.", {...}, "SERVER", callback)
 	self:RegisterCommand(command)
 	return command
 end
@@ -113,7 +113,7 @@ end
 ---
 function CLASS:AddClientCommand(name, callback, ...)
 	assert(CLIENT == true, "Function CLI::AddClientCommand can only be called in client realm.")
-	local command = self:CreateCommand(name, "", {...}, "SERVER", callback)
+	local command = self:CreateCommand(name, "No description provided.", {...}, "SERVER", callback)
 	self:RegisterCommand(command)
 	return command
 end
