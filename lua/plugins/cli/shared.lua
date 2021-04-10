@@ -6,3 +6,10 @@
 
 -- Load meta tables
 include("plugins/cli/meta/sh_jet.lua")
+
+
+-- Create CLI
+Jet._CLI = setmetatable({
+	_Commands = {},
+	_Register = {}
+}, debug.getregistry()["Jet:CLI"])
