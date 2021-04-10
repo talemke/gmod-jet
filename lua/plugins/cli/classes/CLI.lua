@@ -82,10 +82,32 @@ end
 
 
 
+--- Adds a server-side, console-only command.
+---
+--- @param name string the command name
+--- @param callback fun(args:string[],flags:table<string,any>) the callback
+--- @vararg string aliases
+--- @return CliCommand the created command
+---
+function CLASS:AddConsoleCommand(name, callback, ...)
+	assert(SERVER == true, "Function CLI::AddConsoleCommand can only be called in server realm.")
+	return self:AddServerCommand(name, function(ply, args, flags)
+		if ply == NULL then
+			callback(args, flags)
+		else
+			self:Error("This command can only be invoked from the server console.")
+		end
+	end, ...)
+end
+
+
+
+
+
 --- Adds a client-side command.
 ---
 --- @param name string the command name
---- @param callback fun(ply:Player|nil,args:string[],flags:table<string,any>) the callback
+--- @param callback fun(ply:Player,args:string[],flags:table<string,any>) the callback
 --- @vararg string aliases
 --- @return CliCommand the created command
 ---
@@ -100,12 +122,55 @@ end
 
 
 
+--- Adds a shared command.
+---
+--- @param name string the command name
+--- @param callback fun(ply:Player|nil,args:string[],flags:table<string,any>) the callback
+--- @vararg string aliases
+--- @return CliCommand the created command
+---
+function CLASS:AddSharedCommand(name, callback, ...)
+	if SERVER == true then
+		self:AddServerCommand(name, callback, ...)
+	elseif CLIENT == true then
+		self:AddClientCommand(name, callback, ...)
+	end
+end
+
+
+
+
+
+function CLASS:Info(...)
+	Jet:LogInfo("Console", ...)
+end
+
+function CLASS:Debug(...)
+	Jet:LogDebug("Console", ...)
+end
+
+function CLASS:Warn(...)
+	Jet:LogWarning("Console", ...)
+end
+
+function CLASS:Error(...)
+	Jet:LogError("Console", ...)
+end
+
+function CLASS:Severe(...)
+	Jet:LogSevere("Console", ...)
+end
+
+
+
+
+
 --- Attaches/Loads this CLI.
 ---
 function CLASS:Attach()
 	concommand.Add("jet", function(ply, _, args, _)
 		if #args == 0 then
-			print("No command supplied. - Type 'help' for a list of available commands.")
+			self:Warn("No command supplied. - Type 'help' for a list of available commands.")
 			return
 		end
 
@@ -117,7 +182,7 @@ function CLASS:Attach()
 		if cmd ~= nil then
 			cmd.Callback(ply, args, flags)
 		else
-			print("Unknown command: '" .. command .. "' - Type 'help' for a list of available commands.")
+			self:Warn("Unknown command: '" .. command .. "' - Type 'help' for a list of available commands.")
 		end
 	end)
 end
