@@ -1,5 +1,5 @@
 --[[
-	Stack Plugin - (c) 2021 Tassilo <https://tassia.net>
+	Data Structures Plugin - (c) 2021 Tassilo <https://tassia.net>
 	Licensed under the MIT License.
 --]]
 
@@ -10,5 +10,5 @@
 --- @return Stack the created stack
 ---
 _G.Stack = function()
-	return setmetatable({}, debug.getregistry()["Jet:Stack"])
+	return setmetatable({}, debug.getregistry()["Jet:DataStructure:Stack"])
 end
