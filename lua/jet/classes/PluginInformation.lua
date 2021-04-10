@@ -139,6 +139,7 @@ CLASS.LoadOrder = {
 	"shared",
 	"server",
 	"client",
+	"auto",
 	"weapons",
 	"entities",
 	"effects",
