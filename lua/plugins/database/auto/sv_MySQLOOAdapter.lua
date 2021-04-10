@@ -32,8 +32,14 @@ function CLASS:IsConnected()
 end
 
 
+function CLASS:Connect()
+	self._Internal:connect()
+	self._Internal:wait()
+end
+
+
 function CLASS:Disconnect()
-	return self._Internal:disconnect(true)
+	self._Internal:disconnect(true)
 end
 
 
