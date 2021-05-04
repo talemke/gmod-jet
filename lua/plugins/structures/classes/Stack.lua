@@ -5,7 +5,7 @@
 
 
 
---- A stack.
+--- A stack. Uses a sequential Lua table internally.
 ---
 --- @class Stack
 ---
