@@ -2,5 +2,15 @@
 .idea/
 *.iml
 
+# Gradle
+/.gradle/
+/gradle/
+/gradlew
+/gradlew.bat
+
 # Configuration
 lua/jet/config.lua
+
+# Build Output
+/build/
+/target/
