@@ -12,6 +12,9 @@ CLASS.__index = CLASS
 --- @type DatabaseAdapter
 CLASS._Adapter = nil
 
+--- @type table<string, Table>
+CLASS._Tables = nil
+
 
 
 
@@ -22,7 +25,11 @@ function CLASS:Adapter()
 end
 
 
-
+--- @param str string
+--- @return string
+function CLASS:Escape(str)
+	return self._Adapter:Escape(str)
+end
 
 
 --- @param sql string
@@ -36,10 +43,44 @@ end
 
 
 --- @param name string
+--- @param sqlName string|nil
 --- @return Table
+function CLASS:AddTable(name, sqlName)
+	sqlName = sqlName or name
+	local table = setmetatable({
+		_Database = self,
+		_LuaName = name,
+		_SQLName = sqlName,
+		_SQLNameEscaped = "`" .. sqlName .. "`",
+		_Columns = {}
+	}, debug.getregistry()["Jet:DatabaseTable"])
+	self._Tables[name] = table
+	return table
+end
+
+
+--- @param name string
+--- @return Table|nil
 function CLASS:Table(name)
-	-- TODO
-	return nil
+	return self._Tables[name]
+end
+
+
+
+
+
+function CLASS:IsConnected()
+	return self._Adapter:IsConnected()
+end
+
+
+function CLASS:Connect()
+	self._Adapter:Connect()
+end
+
+
+function CLASS:Disconnect()
+	self._Adapter:Disconnect()
 end
 
 

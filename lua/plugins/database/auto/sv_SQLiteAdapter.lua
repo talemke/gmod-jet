@@ -5,9 +5,9 @@
 
 
 
---- @class DatabaseAdapter
+--- @class DatabaseAdapter_SQLite : DatabaseAdapter
 local CLASS = {}
-CLASS.__index = CLASS
+CLASS.__index = debug.getregistry()["Jet:DatabaseAdapter"]
 
 
 
@@ -16,14 +16,18 @@ CLASS.__index = CLASS
 --- @param str string
 --- @return string
 function CLASS:Escape(str)
-	error("Function DatabaseAdapter::Escape has not been implemented.")
+	return sql.SQLStr(str, false)
 end
 
 
 --- @param sql string
 --- @return PreparedStatement
 function CLASS:Prepare(sql)
-	error("Function DatabaseAdapter::Prepare has not been implemented.")
+	return setmetatable({
+		_SQL = sql,
+		_Adapter = self,
+		_Parameters = {}
+	}, debug.getregistry()["Jet:PreparedStatement"])
 end
 
 
@@ -32,17 +36,17 @@ end
 
 --- @return boolean
 function CLASS:IsConnected()
-	error("Function DatabaseAdapter::IsConnected has not been implemented.")
+	return true
 end
 
 
 function CLASS:Connect()
-	error("Function DatabaseAdapter::Connect has not been implemented.")
+	-- Do nothing
 end
 
 
 function CLASS:Disconnect()
-	error("Function DatabaseAdapter::Disconnect has not been implemented.")
+	-- Do nothing
 end
 
 
@@ -52,7 +56,7 @@ end
 --- @param stmt PreparedStatement
 --- @param index number
 function CLASS:StatementSetNull(stmt, index)
-	error("Function DatabaseAdapter::StatementSetNull has not been implemented.")
+	stmt._Parameters[index] = nil
 end
 
 
@@ -60,7 +64,7 @@ end
 --- @param index number
 --- @param value boolean
 function CLASS:StatementSetBoolean(stmt, index, value)
-	error("Function DatabaseAdapter::StatementSetBoolean has not been implemented.")
+	stmt._Parameters[index] = value
 end
 
 
@@ -68,7 +72,7 @@ end
 --- @param index number
 --- @param value number
 function CLASS:StatementSetNumber(stmt, index, value)
-	error("Function DatabaseAdapter::StatementSetNumber has not been implemented.")
+	stmt._Parameters[index] = value
 end
 
 
@@ -76,7 +80,7 @@ end
 --- @param index number
 --- @param value string
 function CLASS:StatementSetString(stmt, index, value)
-	error("Function DatabaseAdapter::StatementSetString has not been implemented.")
+	stmt._Parameters[index] = value
 end
 
 
@@ -86,7 +90,7 @@ end
 --- @param stmt PreparedStatement
 --- @param callback fun(err:string|nil,data:table[]|nil)
 function CLASS:StatementSubmitAsync(stmt, callback)
-	error("Function DatabaseAdapter::StatementSubmit has not been implemented.")
+	callback(self:StatementSubmitBlocking(stmt))
 end
 
 
@@ -94,6 +98,7 @@ end
 --- @return string|nil error
 --- @return table[]|nil data
 function CLASS:StatementSubmitBlocking(stmt)
+	-- TODO: Implementation
 	error("Function DatabaseAdapter::StatementSubmitBlocking has not been implemented.")
 end
 
@@ -102,4 +107,4 @@ end
 
 
 -- Register class.
-debug.getregistry()["Jet:DatabaseAdapter"] = CLASS
+debug.getregistry()["Jet:DatabaseAdapter:SQLite"] = CLASS

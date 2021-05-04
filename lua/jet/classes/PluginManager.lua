@@ -307,6 +307,14 @@ function CLASS:LoadPlugin(info)
 			plugin:Debug("- Loading auto...")
 			self:LoadPluginAuto(info)
 
+		elseif boot == "enums" then
+			plugin:Debug("- Loading enums...")
+			self:LoadPluginEnums(info)
+
+		elseif boot == "meta" then
+			plugin:Debug("- Loading metatables...")
+			self:LoadPluginMeta(info)
+
 		else
 			error("Unknown boot step: '" .. boot .. "'")
 		end
@@ -380,7 +388,7 @@ function CLASS:FileHandlingConsumer()
 			include(dir .. file)
 		elseif self:IsServerFile(file) and SERVER == true then
 			include(dir .. file)
-		else
+		elseif self:IsSharedFile(file) then
 			include(dir .. file)
 		end
 	end
@@ -434,8 +442,24 @@ end
 
 --- @param info PluginInformation the plugin information
 ---
+function CLASS:LoadPluginEnums(info)
+	local pathName = "plugins/" .. info.FolderName .. "/enums/"
+	file.FindRecursive(pathName, "*.lua", "LUA", self:FileHandlingConsumer())
+end
+
+
+--- @param info PluginInformation the plugin information
+---
 function CLASS:LoadPluginLibraries(info)
 	local pathName = "plugins/" .. info.FolderName .. "/libraries/"
+	file.FindRecursive(pathName, "*.lua", "LUA", self:FileHandlingConsumer())
+end
+
+
+--- @param info PluginInformation the plugin information
+---
+function CLASS:LoadPluginMeta(info)
+	local pathName = "plugins/" .. info.FolderName .. "/meta/"
 	file.FindRecursive(pathName, "*.lua", "LUA", self:FileHandlingConsumer())
 end
 
