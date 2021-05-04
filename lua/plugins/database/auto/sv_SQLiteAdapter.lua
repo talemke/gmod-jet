@@ -98,6 +98,7 @@ end
 --- @return string|nil error
 --- @return table[]|nil data
 function CLASS:StatementSubmitBlocking(stmt)
+	-- TODO: Implementation
 	error("Function DatabaseAdapter::StatementSubmitBlocking has not been implemented.")
 end
 
