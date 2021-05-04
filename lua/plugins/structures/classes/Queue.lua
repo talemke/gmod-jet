@@ -1,13 +1,13 @@
 --[[
-	Jet - (c) 2021 Tassilo <https://tassia.net>
+	Data Structures Plugin - (c) 2021 Tassilo <https://tassia.net>
 	Licensed under the MIT License.
 --]]
 
 
 
---- A stack.
+--- A queue. Uses a sequential Lua table internally.
 ---
---- @class Stack
+--- @class Queue
 ---
 local CLASS = {}
 CLASS.__index = CLASS
@@ -17,7 +17,7 @@ CLASS._Data = {}
 
 
 
---- Returns the size of this stack.
+--- Returns the size of this queue.
 ---
 --- @return number the size
 ---
@@ -27,28 +27,28 @@ end
 
 
 
---- Pops the top element from the stack and returns it.
+--- Pops the first element from the queue and returns it.
 ---
 --- @return any|nil the top element
 ---
 function CLASS:Pop()
-	local element = self._Data[#self._Data]
-	table.remove(self._Data)
+	local element = self._Data[1]
+	table.remove(self._Data, 1)
 	return element
 end
 
 
 
---- Peeks at the top of the stack.
+--- Peeks at the front of the queue.
 ---
 --- @return any|nil the top element
 function CLASS:Peek()
-	return self._Data[#self._Data]
+	return self._Data[1]
 end
 
 
 
---- Pushes an element to the top of the stack.
+--- Appends an element to the queue.
 ---
 --- @param element any the element
 ---
@@ -58,7 +58,7 @@ end
 
 
 
---- Clears the stack.
+--- Clears the queue.
 ---
 function CLASS:Clear()
 	self._Data = {}
@@ -66,7 +66,7 @@ end
 
 
 
---- Removes an element from the stack.
+--- Removes an element from the queue.
 ---
 --- @param element any the element to remove
 ---
@@ -76,7 +76,7 @@ end
 
 
 
---- Removes all elements from the stack where 'predicate' returns true.
+--- Removes all elements from the queue where 'predicate' returns true.
 ---
 --- @param predicate fun(element:any):boolean the predicate
 ---
@@ -91,4 +91,4 @@ end
 
 
 -- Register class.
-debug.getregistry()["Jet:Stack"] = CLASS
+debug.getregistry()["Jet:DataStructure:Queue"] = CLASS

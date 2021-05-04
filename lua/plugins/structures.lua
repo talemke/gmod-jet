@@ -1,15 +1,15 @@
 --[[
-	Stack Plugin - (c) 2021 Tassilo <https://tassia.net>
+	Data Structures Plugin - (c) 2021 Tassilo <https://tassia.net>
 	Licensed under the MIT License.
 --]]
 
 return {
 
 	GroupID = "jet",
-	PluginID = "stack",
+	PluginID = "structures",
 	Version = "1.0.0",
-	Name = "Stack",
-	Description = "Adds a stack data structure.",
+	Name = "Data Structures",
+	Description = "Adds data structures to GMod.",
 	Authors = { "Tassilo" },
 
 	Homepage = "https://github.com/TASSIA710/Jet#readme",
