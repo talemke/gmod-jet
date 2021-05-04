@@ -5,6 +5,16 @@
 
 
 
+--- Creates a new queue.
+---
+--- @return Queue the created queue
+---
+_G.Queue = function()
+	return setmetatable({}, debug.getregistry()["Jet:DataStructure:Queue"])
+end
+
+
+
 --- Creates a new stack.
 ---
 --- @return Stack the created stack
