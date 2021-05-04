@@ -134,7 +134,9 @@ CLASS.AutoLoadClasses = true
 --- @type string[]
 ---
 CLASS.LoadOrder = {
+	"enums",
 	"classes",
+	"meta",
 	"libraries",
 	"shared",
 	"server",

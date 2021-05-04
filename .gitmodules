@@ -1,0 +1,3 @@
+[submodule "docs/libgmod"]
+	path = docs/libgmod
+	url = https://github.com/Lexicality/libgmod
