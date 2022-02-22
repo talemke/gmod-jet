@@ -1,17 +1,19 @@
 --[[
-	Jet - (c) 2021 Tassilo <https://tassia.net>
-	Licensed under the MIT License.
+	Jet -> Bootstrapper
+	by Tassilo Lemke
 --]]
 
-print("\n---------- << Jet : START >> ----------\n")
-
 if SERVER then
-	AddCSLuaFile("jet/client.lua")
-	include("jet/server.lua")
+	include("jet/sh_init.lua")
+	include("jet/sv_init.lua")
 end
 
 if CLIENT then
-	include("jet/client.lua")
+	include("jet/sh_init.lua")
+	include("jet/cl_init.lua")
 end
 
-print("\n---------- << Jet : END >> ----------\n")
+if SERVER then
+	AddCSLuaFile("jet/cl_init.lua")
+	AddCSLuaFile("jet/sh_init.lua")
+end
