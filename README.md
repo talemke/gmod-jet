@@ -1,13 +1,10 @@
-# Jet
-A plugin & dependency system for Garry's Mod addons.
-
-
-
----
-
-**Currently undergoing maintenance.**
-
----
+<h1 align="center">Jet</h1>
+<p align="center">A plugin & dependency system for Garry's Mod addons.</p>
+<p align="center">
+	<img src="https://img.shields.io/github/actions/workflow/status/talemke/gmod-jet/linter.yml?label=Jet" />
+	<img src="https://img.shields.io/github/license/talemke/gmod-jet?label=License" />
+	<img src="https://img.shields.io/badge/Status-Unstable / In Development-orange" />
+</p>
 
 
 
